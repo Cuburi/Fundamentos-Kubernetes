@@ -89,3 +89,5 @@ _(Si prefieres no usar badges ni foto, también puedes escribir tu nombre en tex
 > [!TIP]
 > **Haz Networking:**  
 > Te invitamos a hacer clic en los perfiles de GitHub y LinkedIn de tus compañeros de tripulación. La mayor ventaja del workshop es la red de apoyo y los contactos profesionales que construyes en el camino. 🤝🚀
+
+| @sanjavier88 | Tripulante de la Comunidad | [@sanjavier88](https://github.com/sanjavier88) | ⛵ Marinero | Aporte en PR #30: Me registro como Marinero en ASISTENTES.md |
