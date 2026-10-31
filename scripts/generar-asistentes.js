@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /**
- * Script generador del Muro de Asistentes (ASISTENTES.md) a partir de asistentes.json
+ * Script generador del Muro de Asistentes (ASISTENTES.md) y del Mosaico Visual en README.md
+ * a partir de asistentes.json.
  * Garantiza que todos los registros cumplan el estándar visual (avatar .png, badges válidos, sin duplicados).
  */
 const fs = require('fs');
@@ -9,6 +10,7 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const JSON_PATH = path.join(ROOT, 'asistentes.json');
 const MD_PATH = path.join(ROOT, 'ASISTENTES.md');
+const README_PATH = path.join(ROOT, 'README.md');
 
 function cleanGithubUser(input, fallbackUser = '') {
   if (!input) return fallbackUser;
@@ -22,7 +24,6 @@ function cleanGithubUser(input, fallbackUser = '') {
   ) {
     return fallbackUser;
   }
-  // Si pegaron URL completa como https://github.com/usuario.png o https://github.com/usuario/
   val = val.replace(/^https?:\/\/(www\.)?github\.com\//i, '');
   val = val.split(/[/?#]/)[0];
   val = val.replace(/\.png$/i, '');
@@ -134,7 +135,6 @@ function buildRow(entry) {
     );
   }
 
-  // Soporte retrocompatible para campo "x" o lista "redes"
   const extraLinks = [];
   if (entry.x && entry.x.trim()) {
     extraLinks.push(entry.x.trim());
@@ -152,6 +152,60 @@ function buildRow(entry) {
   }
 
   return `| ${avatar} | ${rol} | ${badges.join('<br>')} | ${rango} | ${motivacion} |`;
+}
+
+function buildReadmeMosaicSection(asistentes) {
+  const cols = 6;
+  const rowsHtml = [];
+  for (let i = 0; i < asistentes.length; i += cols) {
+    const chunk = asistentes.slice(i, i + cols);
+    const cells = chunk.map(entry => {
+      const user = cleanGithubUser(entry.github);
+      const fullName = (entry.nombre || user).replace(/<[^>]*>/g, '').trim();
+      const parts = fullName.split(/\s+/);
+      const shortName = parts.length > 2 ? `${parts[0]} ${parts[1]}` : fullName;
+      const rango = (entry.rango || '⛵ Marinero').trim();
+      const profileLink = cleanLinkedin(entry.linkedin) || `https://github.com/${user}`;
+      return `    <td align="center" width="140">\n      <a href="${profileLink}" title="${fullName} (@${user})">\n        <img src="https://github.com/${user}.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="${user}"/><br/>\n        <sub><b>${shortName}</b></sub>\n      </a><br/>\n      <sub>${rango}</sub>\n    </td>`;
+    });
+    rowsHtml.push(`  <tr>\n${cells.join('\n')}\n  </tr>`);
+  }
+
+  return `<!-- INICIO_MOSAICO_TRIPULACION -->
+## 👥 Tripulación a Bordo (${asistentes.length} Navegantes)
+
+<div align="center">
+
+[![Tripulantes a Bordo](https://img.shields.io/badge/⛵_Tripulantes_a_Bordo-${asistentes.length}-00C7B7?style=for-the-badge)](./ASISTENTES.md)
+[![Registrarme en 30 seg](https://img.shields.io/badge/➕_¡Regístrate_Aquí!_(Formulario_Visual)-2ea44f?style=for-the-badge&logo=github)](https://github.com/edwinbermudez91/Fundamentos-Kubernetes/issues/new?template=registro-asistente.yml)
+[![Ver Muro Completo](https://img.shields.io/badge/📋_Ver_Muro_y_Redes_Profesionales-326CE5?style=for-the-badge)](./ASISTENTES.md)
+
+<table>
+${rowsHtml.join('\n')}
+</table>
+
+<sub>💡 <b>¿Aún no apareces aquí?</b> Haz clic en <a href="https://github.com/edwinbermudez91/Fundamentos-Kubernetes/issues/new?template=registro-asistente.yml"><b>➕ ¡Regístrate Aquí!</b></a> y nuestro bot agregará tu foto automáticamente en 15 segundos.</sub>
+
+</div>
+<!-- FIN_MOSAICO_TRIPULACION -->`;
+}
+
+function updateReadmeWithMosaic(asistentes, readmeContent) {
+  const mosaicBlock = buildReadmeMosaicSection(asistentes);
+  const startMarker = '<!-- INICIO_MOSAICO_TRIPULACION -->';
+  const endMarker = '<!-- FIN_MOSAICO_TRIPULACION -->';
+
+  if (readmeContent.includes(startMarker) && readmeContent.includes(endMarker)) {
+    const regex = new RegExp(`${startMarker}[\\s\\S]*?${endMarker}`);
+    return readmeContent.replace(regex, mosaicBlock);
+  }
+
+  // Si no existe aún en README.md, insertarlo antes de "## 🏆 Rangos de Navegación"
+  const targetHeading = '## 🏆 Rangos de Navegación (Gamificación)';
+  if (readmeContent.includes(targetHeading)) {
+    return readmeContent.replace(targetHeading, `${mosaicBlock}\n\n---\n\n${targetHeading}`);
+  }
+  return readmeContent + '\n\n' + mosaicBlock + '\n';
 }
 
 function renderAsistentesMarkdown(asistentes) {
@@ -211,7 +265,7 @@ No necesitas instalar nada ni descargar el proyecto en tu computador. Solo sigue
 4. **Envía el formulario:** Baja hasta el final de la página y haz clic en el botón verde que dice **\`Create\`** (o **\`Submit new issue\`**).
 5. **¡Magia automática! 🤖✨:**
    - Espera unos **15 a 20 segundos**.
-   - Nuestro robot de GitHub Actions leerá tu formulario, validará tus enlaces, te responderá con un mensaje de bienvenida y **actualizará esta tabla automáticamente** con tu foto, tus botones de redes y tu rango de **⛵ Marinero**.
+   - Nuestro robot de GitHub Actions leerá tu formulario, validará tus enlaces, te responderá con un mensaje de bienvenida y **actualizará esta tabla y la portada del repositorio automáticamente** con tu foto, tus botones de redes y tu rango de **⛵ Marinero**.
 
 > [!TIP]
 > **¿Te equivocaste en algún dato o quieres agregar otra red social después?**  
@@ -280,7 +334,11 @@ if (require.main === module) {
   fs.writeFileSync(JSON_PATH, JSON.stringify(deduped, null, 2) + '\n', 'utf8');
   const md = renderAsistentesMarkdown(deduped);
   fs.writeFileSync(MD_PATH, md, 'utf8');
-  console.log(`✅ ASISTENTES.md generado exitosamente con ${deduped.length} tripulantes.`);
+  if (fs.existsSync(README_PATH)) {
+    const readme = fs.readFileSync(README_PATH, 'utf8');
+    fs.writeFileSync(README_PATH, updateReadmeWithMosaic(deduped, readme), 'utf8');
+  }
+  console.log(`✅ ASISTENTES.md y README.md generados exitosamente con ${deduped.length} tripulantes.`);
 }
 
 module.exports = {
@@ -289,5 +347,7 @@ module.exports = {
   parseExtraSocialLinks,
   buildSocialBadge,
   buildRow,
+  buildReadmeMosaicSection,
+  updateReadmeWithMosaic,
   renderAsistentesMarkdown
 };

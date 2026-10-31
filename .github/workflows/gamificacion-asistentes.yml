@@ -27,7 +27,7 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            const { cleanLinkedin, renderAsistentesMarkdown } = require('./scripts/generar-asistentes.js');
+            const { cleanLinkedin, updateReadmeWithMosaic, renderAsistentesMarkdown } = require('./scripts/generar-asistentes.js');
             const pr = context.payload.pull_request;
             const user = pr.user.login;
 
@@ -146,6 +146,10 @@ jobs:
             if (updated) {
               fs.writeFileSync('asistentes.json', JSON.stringify(data, null, 2) + '\n', 'utf8');
               fs.writeFileSync('ASISTENTES.md', renderedMd, 'utf8');
+              if (fs.existsSync('README.md')) {
+                const readme = fs.readFileSync('README.md', 'utf8');
+                fs.writeFileSync('README.md', updateReadmeWithMosaic(data, readme), 'utf8');
+              }
               core.setOutput('has_updates', 'true');
               core.setOutput('new_rank', newRank);
               core.setOutput('count', mergedCount.toString());
@@ -158,7 +162,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add asistentes.json ASISTENTES.md
+          git add asistentes.json ASISTENTES.md README.md
           if ! git diff --staged --quiet; then
             git commit -m "chore(gamificacion): actualizar rango de navegación de @${{ github.event.pull_request.user.login }} a ${{ steps.calcular.outputs.new_rank }} [skip ci]"
             git pull --rebase origin ${{ github.event.repository.default_branch }}

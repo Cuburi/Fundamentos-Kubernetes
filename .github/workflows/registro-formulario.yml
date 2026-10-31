@@ -30,6 +30,7 @@ jobs:
               cleanGithubUser,
               cleanLinkedin,
               parseExtraSocialLinks,
+              updateReadmeWithMosaic,
               renderAsistentesMarkdown
             } = require('./scripts/generar-asistentes.js');
 
@@ -87,6 +88,10 @@ jobs:
             fs.writeFileSync('asistentes.json', JSON.stringify(data, null, 2) + '\n', 'utf8');
             const md = renderAsistentesMarkdown(data);
             fs.writeFileSync('ASISTENTES.md', md, 'utf8');
+            if (fs.existsSync('README.md')) {
+              const readme = fs.readFileSync('README.md', 'utf8');
+              fs.writeFileSync('README.md', updateReadmeWithMosaic(data, readme), 'utf8');
+            }
 
             core.setOutput('user', user);
             core.setOutput('nombre', nombre);
@@ -96,7 +101,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add asistentes.json ASISTENTES.md
+          git add asistentes.json ASISTENTES.md README.md
           if ! git diff --staged --quiet; then
             git commit -m "chore(asistentes): ${ACTION_TYPE} tripulante @${GH_USER} desde formulario [skip ci]"
             git pull --rebase origin ${{ github.event.repository.default_branch }}
