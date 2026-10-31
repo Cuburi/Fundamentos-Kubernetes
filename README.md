@@ -135,11 +135,11 @@ Si no puedes instalar Docker Desktop o tu máquina no tiene suficiente memoria R
 <table>
   <tr>
     <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/glgaviria" title="Gloria Gaviria (@glgaviria64) — 10 XP">
+      <a href="https://www.linkedin.com/in/glgaviria" title="Gloria Gaviria (@glgaviria64) — 30 XP">
         <img src="https://github.com/glgaviria64.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="glgaviria64"/><br/>
-        <sub><b>Gloria Gaviria</b></sub>
+        <sub><b>🥇 Gloria Gaviria</b></sub>
       </a><br/>
-      <sub>⛵ Marinero • <b>10 XP</b></sub>
+      <sub>⛵ Marinero • <b>30 XP</b></sub>
     </td>
     <td align="center" width="140">
       <a href="https://www.linkedin.com/in/cristian-camilo-sanchez-bermudez" title="Cristian Sanchez (@ccsanchezb04) — 10 XP">
@@ -389,11 +389,11 @@ Si no puedes instalar Docker Desktop o tu máquina no tiene suficiente memoria R
 
 En cada carpeta semanal encontrarás una subcarpeta llamada **`2.reto-roto/`**. Son manifiestos y escenarios con errores de la vida real puestos a propósito. 
 
-A medida que envíes tus Pull Requests (PRs) resolviendo **todos los retos rotos de cada semana**, nuestro bot validará tus soluciones y sumará puntos (**XP**) en la tabla de posiciones de [`ASISTENTES.md`](./ASISTENTES.md):
+A medida que envíes tus Pull Requests (PRs) resolviendo los retos rotos de cada semana, nuestro bot validará que cada archivo corresponda al ejercicio real y sumará **+10 XP por cada reto roto solucionado** en la tabla de posiciones de [`ASISTENTES.md`](./ASISTENTES.md):
 
-* ⛵ **Marinero (10 XP):** Te registraste en el Muro de la Tripulación en `ASISTENTES.md`.
-* 🧭 **Timonel (110+ XP — 2+ Semanas Completadas al 100%):** Resolviste y validaste **todos** los ejercicios de los *Retos Rotos* de al menos 2 semanas (+50 XP por cada semana completada).
-* ⚓ **Capitán K8s (310+ XP — 6 Semanas Completadas al 100%):** Dominas la navegación del clúster, completaste todos los retos de las 6 semanas y el proyecto final.
+* ⛵ **Marinero (10 XP base):** Te registraste en el Muro de la Tripulación en `ASISTENTES.md` (+10 XP adicionales por cada reto roto validado).
+* 🧭 **Timonel (2+ Semanas Completadas al 100%):** Resolviste y validaste **todos** los ejercicios de los *Retos Rotos* de al menos 2 semanas (`5/5` en Semana 00, `4/4` en Semana 01, etc.).
+* ⚓ **Capitán K8s (6 Semanas Completadas al 100%):** Dominas la navegación del clúster, completaste todos los retos de las 6 semanas y el proyecto final.
 
 ---
 

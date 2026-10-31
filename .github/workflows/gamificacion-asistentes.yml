@@ -105,10 +105,11 @@ jobs:
             const reportLines = userEval.detailedReport
               .filter(r => r.solvedCount > 0)
               .map(r => {
+                const earnedXp = r.solvedCount * 10;
                 if (r.isComplete) {
-                  return `- ✅ **${r.weekKey}:** \`${r.solvedCount}/${r.totalExpected} retos validados\` *(¡Semana 100% completada! +50 XP)*`;
+                  return `- ✅ **${r.weekKey}:** \`${r.solvedCount}/${r.totalExpected} retos validados\` *(¡Semana 100% completada! +${earnedXp} XP)*`;
                 }
-                return `- ⏳ **${r.weekKey} (Incompleta):** \`${r.solvedCount}/${r.totalExpected} retos validados\` *(Faltan por resolver/corregir: ${r.missingNums.join(', ')} — suma +50 XP al completar todos)*`;
+                return `- ⏳ **${r.weekKey}:** \`${r.solvedCount}/${r.totalExpected} retos validados\` *(+${earnedXp} XP — Faltan por resolver/corregir: ${r.missingNums.join(', ')})*`;
               });
 
             const reportMarkdown =

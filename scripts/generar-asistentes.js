@@ -319,15 +319,16 @@ function listFilesRecursive(dirPath) {
 
 /**
  * Evalúa los ejercicios resueltos por un estudiante en aportes-comunidad/soluciones-retos/<usuario>/
- * Regla estricta:
+ * Regla de puntaje y validación:
  * - Registro inicial = 10 XP
- * - Cada ejercicio se valida contra el contenido real de 2.reto-roto/
- * - Solo se otorgan los +50 XP de la semana cuando TODOS los ejercicios de esa semana están resueltos y validados (ej. 5/5 en Semana 00, 4/4 en Semana 01).
+ * - Cada ejercicio resuelto y validado contra el contenido real de 2.reto-roto/ = +10 XP (suma en la tabla de puntaje desde el primer reto logrado)
+ * - Para que una semana cuente como 100% completada (para ascenso de rango Timonel / Capitán), debe resolver todos los retos de esa semana (ej. 5/5 en Semana 00, 4/4 en Semana 01).
  */
 function evaluateUserProgress(githubUser, officialChallenges) {
   const cleanUser = cleanGithubUser(githubUser);
   let points = 10; // 10 XP base por registrarse
   let completedWeeksCount = 0;
+  let totalSolvedChallenges = 0;
   const weekSummaries = [];
   const detailedReport = [];
 
@@ -391,13 +392,15 @@ function evaluateUserProgress(githubUser, officialChallenges) {
     const isComplete = solvedCount === totalExpected && totalExpected > 0;
     const shortLabel = weekKey.replace('semana-', 'Sem ');
 
-    if (isComplete) {
-      points += 50; // +50 XP al completar el 100% de los retos rotos de la semana
-      completedWeeksCount += 1;
-      weekSummaries.push(`✅ ${shortLabel}: ${solvedCount}/${totalExpected}`);
-    } else if (solvedCount > 0) {
-      // No suma puntos hasta completar todos los ejercicios de la semana, pero muestra su avance
-      weekSummaries.push(`⏳ ${shortLabel}: ${solvedCount}/${totalExpected} (Incompleta)`);
+    if (solvedCount > 0) {
+      points += solvedCount * 10; // +10 XP por cada reto roto validado
+      totalSolvedChallenges += solvedCount;
+      if (isComplete) {
+        completedWeeksCount += 1;
+        weekSummaries.push(`✅ ${shortLabel}: ${solvedCount}/${totalExpected}`);
+      } else {
+        weekSummaries.push(`⏳ ${shortLabel}: ${solvedCount}/${totalExpected}`);
+      }
     }
 
     detailedReport.push({
@@ -425,6 +428,7 @@ function evaluateUserProgress(githubUser, officialChallenges) {
   return {
     points,
     completedWeeksCount,
+    totalSolvedChallenges,
     rango,
     summaryText,
     detailedReport
@@ -587,14 +591,14 @@ A medida que avances semana a semana, nuestro bot de GitHub Actions inspeccionar
 | Acción / Logro | Puntos (XP) | Regla de Validación Estricta |
 | :--- | :---: | :--- |
 | **1. Registro en el Muro** | **+10 XP** | Por registrarte en el formulario o vía Pull Request. |
-| **2. Semana 100% Completada y Validada** | **+50 XP por semana** | **¡Todo o Nada por Semana!** Debes resolver y subir **TODOS los retos rotos** de la semana (${weekChallengesText}). Si subes solo 1 ejercicio o un archivo que no corresponde al reto, la semana queda como \`⏳ Incompleta\` y no suma los 50 XP hasta completarla. |
+| **2. Reto Roto Resuelto y Validado** | **+10 XP por reto** | Cada ejercicio de \`2.reto-roto/\` (${weekChallengesText}) que resuelvas y pase la validación de contenido suma **+10 XP** en la tabla de posiciones (ej. Semana 00 completa = +50 XP, Semana 01 completa = +40 XP). Si subes un archivo que no corresponde al reto roto, no suma puntos. |
 
 ### 🎖️ Requisitos para subir de Rango:
 | Rango | Requisito | Lo que representa en la travesía |
 | :---: | :---: | :--- |
 | **⛵ Marinero** | Registro inicial (**10 XP**) | Te registraste en este muro y zarpó tu primer Pod en el clúster. |
-| **🧭 Timonel** | **2+ Semanas Completadas al 100% (110+ XP)** | Resolviste y validaste **todos** los ejercicios de los _Retos Rotos_ de al menos 2 semanas. |
-| **⚓ Capitán K8s** | **6 Semanas Completadas al 100% (310+ XP)** | Dominas la navegación del clúster, completaste todos los ejercicios de las 6 semanas y el proyecto final. |
+| **🧭 Timonel** | **2+ Semanas Completadas al 100%** | Resolviste y validaste **todos** los ejercicios de los _Retos Rotos_ de al menos 2 semanas. |
+| **⚓ Capitán K8s** | **6 Semanas Completadas al 100%** | Dominas la navegación del clúster, completaste todos los ejercicios de las 6 semanas y el proyecto final. |
 
 ---
 
