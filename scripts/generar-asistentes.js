@@ -16,7 +16,7 @@ const MD_PATH = path.join(ROOT, 'ASISTENTES.md');
 const README_PATH = path.join(ROOT, 'README.md');
 const SOLUCIONES_DIR = path.join(ROOT, 'aportes-comunidad', 'soluciones-retos');
 
-const INSTRUCTORS = ['edwinbermudez91'];
+const INSTRUCTORS = ['edwinbermudez91', 'santiago1023', 'vdevalen', 'andresqb198', 'ka1999'];
 
 function cleanGithubUser(input, fallbackUser = '') {
   if (!input) return fallbackUser;
@@ -488,7 +488,7 @@ function buildStudentRow(entry, rankPosition) {
   return `| ${medal} | ${avatar} | ${rol} | ${badgesStr} | ${rango}<br><sub>${progreso}</sub> | ${motivacion} |`;
 }
 
-function buildReadmeMosaicSection(students) {
+function buildReadmeMosaicSection(students, instructorsList = []) {
   const cols = 6;
   const rowsHtml = [];
   for (let i = 0; i < students.length; i += cols) {
@@ -513,6 +513,21 @@ function buildReadmeMosaicSection(students) {
     rowsHtml.push(`  <tr>\n${cells.join('\n')}\n  </tr>`);
   }
 
+  let instructorsBlock = '';
+  if (instructorsList && instructorsList.length > 0) {
+    const instCells = instructorsList.map(inst => {
+      const user = cleanGithubUser(inst.github);
+      const fullName = (inst.nombre || user).replace(/<[^>]*>/g, '').trim();
+      const parts = fullName.split(/\s+/);
+      const shortName = parts.length > 2 ? `${parts[0]} ${parts[1]}` : fullName;
+      const isCaptain = user.toLowerCase() === 'edwinbermudez91';
+      const roleTag = isCaptain ? '⚓ Capitán • Instructor' : '🤝 Colaborador(a)';
+      const profileLink = cleanLinkedin(inst.linkedin) || `https://github.com/${user}`;
+      return `    <td align="center" width="150">\n      <a href="${profileLink}" title="${fullName} (@${user})">\n        <img src="https://github.com/${user}.png?size=100" width="68" height="68" style="border-radius: 50%;" alt="${user}"/><br/>\n        <sub><b>${shortName}</b></sub>\n      </a><br/>\n      <sub>${roleTag}</sub>\n    </td>`;
+    });
+    instructorsBlock = `### 👨‍🏫 Capitán y Colaboradores de la Nave\n\n<table>\n  <tr>\n${instCells.join('\n')}\n  </tr>\n</table>\n\n### 🏆 Ranking de la Tripulación (${students.length} Tripulantes)\n\n`;
+  }
+
   return `<!-- INICIO_MOSAICO_TRIPULACION -->
 ## 👥 Tripulación a Bordo y Ranking (${students.length} Tripulantes)
 
@@ -523,7 +538,7 @@ function buildReadmeMosaicSection(students) {
 [![Actualizar mis Datos](https://img.shields.io/badge/✏️_Actualizar_mis_Datos_o_Redes-f57c00?style=for-the-badge&logo=github)](https://github.com/edwinbermudez91/Fundamentos-Kubernetes/issues/new?template=registro-asistente.yml)
 [![Ver Ranking Completo](https://img.shields.io/badge/🏆_Ver_Tabla_de_Puntajes_y_Redes-326CE5?style=for-the-badge)](./ASISTENTES.md)
 
-<table>
+${instructorsBlock}<table>
 ${rowsHtml.join('\n')}
 </table>
 
@@ -533,8 +548,8 @@ ${rowsHtml.join('\n')}
 <!-- FIN_MOSAICO_TRIPULACION -->`;
 }
 
-function updateReadmeWithMosaic(students, readmeContent) {
-  const mosaicBlock = buildReadmeMosaicSection(students);
+function updateReadmeWithMosaic(students, readmeContent, instructorsList = []) {
+  const mosaicBlock = buildReadmeMosaicSection(students, instructorsList);
   const startMarker = '<!-- INICIO_MOSAICO_TRIPULACION -->';
   const endMarker = '<!-- FIN_MOSAICO_TRIPULACION -->';
 
@@ -550,7 +565,7 @@ function updateReadmeWithMosaic(students, readmeContent) {
   return readmeContent + '\n\n' + mosaicBlock + '\n';
 }
 
-function renderAsistentesMarkdown(students, instructorEntry, officialChallenges) {
+function renderAsistentesMarkdown(students, instructorsList, officialChallenges) {
   const rows = students.map((s, idx) => buildStudentRow(s, idx + 1)).join('\n');
 
   const weekChallengesText = Object.entries(officialChallenges)
@@ -558,14 +573,21 @@ function renderAsistentesMarkdown(students, instructorEntry, officialChallenges)
     .join(', ');
 
   let instructorCard = '';
-  if (instructorEntry) {
-    const instBadges = buildSocialBadgesString(instructorEntry).replace(/<br>/g, ' &nbsp; ');
+  if (instructorsList && instructorsList.length > 0) {
+    const instRows = instructorsList.map(inst => {
+      const u = cleanGithubUser(inst.github);
+      const nom = (inst.nombre || u).trim();
+      const rol = (inst.rol || '🤝 Colaborador').trim();
+      const mot = (inst.motivacion || 'Compartir conocimiento y fortalecer la comunidad Cloud Native en Medellín. 🏔️☕').trim();
+      const instBadges = buildSocialBadgesString(inst).replace(/<br>/g, ' &nbsp; ');
+      return `| <img src="https://github.com/${u}.png?size=50" width="36" height="36" style="border-radius: 50%; vertical-align: middle; margin-right: 8px;"> **${nom}** | ${rol} | ${instBadges} | ${mot} |`;
+    }).join('\n');
     instructorCard = `
-## 👨‍🏫 Capitán de la Nave (Instructor y Mantenedor)
+## 👨‍🏫 Capitán y Colaboradores de la Nave (Equipo Organizador)
 
-| 👤 Instructor | 💼 Especialidad | 🌐 Redes Profesionales | 🎯 Misión en la Comunidad |
+| 👤 Integrante | 💼 Rol / Especialidad | 🌐 Redes Profesionales | 🎯 Misión en la Comunidad |
 | :--- | :--- | :---: | :--- |
-| <img src="https://github.com/edwinbermudez91.png?size=50" width="36" height="36" style="border-radius: 50%; vertical-align: middle; margin-right: 8px;"> **Edwin Bermúdez** | 👨‍🏫 Instructor<br>Senior DevOps & SRE | ${instBadges} | Compartir conocimiento y fortalecer la comunidad Cloud Native en Medellín. 🏔️☕ |
+${instRows}
 
 ---
 `;
@@ -686,7 +708,7 @@ function processAndSortData(rawData) {
     }
   }
 
-  let instructorEntry = null;
+  const instructorsList = [];
   const students = [];
 
   let orderIndex = 0;
@@ -694,7 +716,7 @@ function processAndSortData(rawData) {
     const isInstructor = INSTRUCTORS.includes(item.github.toLowerCase());
     if (isInstructor) {
       item.rango = '⚓ Capitán K8s';
-      instructorEntry = item;
+      instructorsList.push(item);
     } else {
       const evalResult = evaluateUserProgress(item.github, officialChallenges);
       item.rango = evalResult.rango;
@@ -712,15 +734,15 @@ function processAndSortData(rawData) {
   });
 
   const cleanJsonList = [];
-  if (instructorEntry) {
+  for (const inst of instructorsList) {
     cleanJsonList.push({
-      github: instructorEntry.github,
-      nombre: instructorEntry.nombre,
-      rol: instructorEntry.rol,
-      linkedin: instructorEntry.linkedin || '',
-      redes: instructorEntry.redes || [],
-      rango: instructorEntry.rango,
-      motivacion: instructorEntry.motivacion
+      github: inst.github,
+      nombre: inst.nombre,
+      rol: inst.rol,
+      linkedin: inst.linkedin || '',
+      redes: inst.redes || [],
+      rango: inst.rango,
+      motivacion: inst.motivacion
     });
   }
   for (const s of students) {
@@ -739,21 +761,21 @@ function processAndSortData(rawData) {
   return {
     cleanJsonList,
     students,
-    instructorEntry,
+    instructorsList,
     officialChallenges
   };
 }
 
 function syncAllFiles(rawData) {
-  const { cleanJsonList, students, instructorEntry, officialChallenges } = processAndSortData(rawData);
+  const { cleanJsonList, students, instructorsList, officialChallenges } = processAndSortData(rawData);
   fs.writeFileSync(JSON_PATH, JSON.stringify(cleanJsonList, null, 2) + '\n', 'utf8');
-  const md = renderAsistentesMarkdown(students, instructorEntry, officialChallenges);
+  const md = renderAsistentesMarkdown(students, instructorsList, officialChallenges);
   fs.writeFileSync(MD_PATH, md, 'utf8');
   if (fs.existsSync(README_PATH)) {
     const readme = fs.readFileSync(README_PATH, 'utf8');
-    fs.writeFileSync(README_PATH, updateReadmeWithMosaic(students, readme), 'utf8');
+    fs.writeFileSync(README_PATH, updateReadmeWithMosaic(students, readme, instructorsList), 'utf8');
   }
-  return { cleanJsonList, students, instructorEntry, officialChallenges };
+  return { cleanJsonList, students, instructorsList, officialChallenges };
 }
 
 if (require.main === module) {

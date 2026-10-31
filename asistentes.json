@@ -2,11 +2,47 @@
   {
     "github": "edwinbermudez91",
     "nombre": "Edwin Bermúdez",
-    "rol": "👨‍🏫 Instructor<br>Senior DevOps & SRE",
+    "rol": "👨‍🏫 Instructor Principal<br>Senior DevOps & SRE",
     "linkedin": "https://www.linkedin.com/in/edwin-bermudez-cuervo",
     "redes": [],
     "rango": "⚓ Capitán K8s",
     "motivacion": "Compartir conocimiento y fortalecer la comunidad Cloud Native en Medellín. 🏔️☕"
+  },
+  {
+    "github": "Santiago1023",
+    "nombre": "Santiago Bedoya Díaz",
+    "rol": "🤝 Colaborador<br>Equipo Organizador",
+    "linkedin": "https://www.linkedin.com/in/santiago-bedoya-diaz/",
+    "redes": [],
+    "rango": "⚓ Capitán K8s",
+    "motivacion": "Apoyar y acompañar a la comunidad Cloud Native Medellín en su travesía por Kubernetes. 🏔️☕"
+  },
+  {
+    "github": "vdevalen",
+    "nombre": "Valentina Pinzón Montoya",
+    "rol": "🤝 Colaboradora<br>Equipo Organizador",
+    "linkedin": "https://www.linkedin.com/in/valentina-p-86b3b913a/",
+    "redes": [],
+    "rango": "⚓ Capitán K8s",
+    "motivacion": "Apoyar y acompañar a la comunidad Cloud Native Medellín en su travesía por Kubernetes. 🏔️☕"
+  },
+  {
+    "github": "andresqb198",
+    "nombre": "Andrés Quintero Bedoya",
+    "rol": "🤝 Colaborador<br>Equipo Organizador",
+    "linkedin": "https://www.linkedin.com/in/andresqb198/",
+    "redes": [],
+    "rango": "⚓ Capitán K8s",
+    "motivacion": "Apoyar y acompañar a la comunidad Cloud Native Medellín en su travesía por Kubernetes. 🏔️☕"
+  },
+  {
+    "github": "Ka1999",
+    "nombre": "Karen González",
+    "rol": "🤝 Colaboradora<br>Equipo Organizador",
+    "linkedin": "https://www.linkedin.com/in/kagonzaleza/",
+    "redes": [],
+    "rango": "⚓ Capitán K8s",
+    "motivacion": "Apoyar y acompañar a la comunidad Cloud Native Medellín en su travesía por Kubernetes. 🏔️☕"
   },
   {
     "github": "glgaviria64",
