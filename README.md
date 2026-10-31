@@ -165,7 +165,7 @@ Si no puedes instalar Docker Desktop o tu máquina no tiene suficiente memoria R
       <sub>🤝 Colaborador(a)</sub>
     </td>
     <td align="center" width="150">
-      <a href="https://www.linkedin.com/in/kagonzaleza/" title="Karen González (@Ka1999)">
+      <a href="https://www.linkedin.com/in/karengonzalezanalista/" title="Karen González (@Ka1999)">
         <img src="https://github.com/Ka1999.png?size=100" width="68" height="68" style="border-radius: 50%;" alt="Ka1999"/><br/>
         <sub><b>Karen González</b></sub>
       </a><br/>
