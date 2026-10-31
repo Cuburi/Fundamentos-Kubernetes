@@ -1,4 +1,4 @@
-name: 🏆 Gamificación - Actualizar Rango Automáticamente
+name: 🏆 Gamificación - Evaluar Ejercicios y Actualizar Ranking Automáticamente
 
 on:
   pull_request_target:
@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   actualizar-rango:
-    name: Actualizar Rango en ASISTENTES.md
+    name: Evaluar Ejercicios y Actualizar Ranking en ASISTENTES.md
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-24.04
     steps:
@@ -21,13 +21,20 @@ jobs:
           ref: ${{ github.event.repository.default_branch }}
           fetch-depth: 0
 
-      - name: 🎖️ Calcular y actualizar rango de asistente
+      - name: 🎖️ Evaluar ejercicios completados y actualizar ranking
         id: calcular
         uses: actions/github-script@v9
         with:
           script: |
             const fs = require('fs');
-            const { cleanLinkedin, updateReadmeWithMosaic, renderAsistentesMarkdown } = require('./scripts/generar-asistentes.js');
+            const {
+              INSTRUCTORS,
+              cleanLinkedin,
+              discoverOfficialChallenges,
+              evaluateUserProgress,
+              syncAllFiles
+            } = require('./scripts/generar-asistentes.js');
+
             const pr = context.payload.pull_request;
             const user = pr.user.login;
 
@@ -37,92 +44,43 @@ jobs:
               return;
             }
 
-            // Ignorar al instructor / mantenedor principal (siempre mantiene su rango fijo de Capitán)
-            const instructors = ['edwinbermudez91', context.repo.owner.toLowerCase()];
+            const instructors = [...INSTRUCTORS, context.repo.owner.toLowerCase()];
             if (instructors.includes(user.toLowerCase())) {
-              console.log(`Ignorando instructor @${user}: mantiene su rango fijo de Capitán.`);
+              console.log(`Ignorando instructor @${user}: no participa en la tabla de puntajes.`);
               core.setOutput('has_updates', 'false');
               return;
             }
 
-            // Consultar todos los PRs cerrados y fusionados de este usuario
-            const pulls = await github.paginate(github.rest.pulls.list, {
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'closed',
-              per_page: 100
-            });
-
-            const mergedCount = pulls.filter(p =>
-              p.user &&
-              p.user.login.toLowerCase() === user.toLowerCase() &&
-              p.merged_at !== null
-            ).length;
-
-            console.log(`Usuario @${user} tiene ${mergedCount} PR(s) fusionados.`);
-
-            // Determinar rango de navegación según gamificación
-            let newRank = '⛵ Marinero';
-            if (mergedCount >= 6) {
-              newRank = '⚓ Capitán K8s';
-            } else if (mergedCount >= 3) {
-              newRank = '🧭 Timonel';
-            }
-
             let data = JSON.parse(fs.readFileSync('asistentes.json', 'utf8'));
+            let mdBefore = fs.readFileSync('ASISTENTES.md', 'utf8');
+            let readmeBefore = fs.existsSync('README.md') ? fs.readFileSync('README.md', 'utf8') : '';
 
-            // Intentar detectar si el usuario agregó una fila manualmente en ASISTENTES.md en su PR
-            // para migrar sus datos a asistentes.json sin que se pierdan ni quede fuera de formato
-            let mdContent = fs.readFileSync('ASISTENTES.md', 'utf8');
-            let mdLines = mdContent.split('\n');
+            // Detectar si agregaron fila manual en ASISTENTES.md
             let manualEntry = null;
-            for (const line of mdLines) {
+            for (const line of mdBefore.split('\n')) {
               if (
                 line.trim().startsWith('|') &&
                 (line.toLowerCase().includes(user.toLowerCase()) || line.includes('TU-USUARIO'))
               ) {
                 const parts = line.split('|').map(p => p.trim());
                 if (parts.length >= 6) {
-                  const nameMatch = parts[1].match(/\*\*(.+?)\*\*/);
-                  const linkedinMatch = parts[3].match(/linkedin\.com\/[^\s)"]+/i);
+                  const nameMatch = (parts[1] + ' ' + parts[2]).match(/\*\*(.+?)\*\*/);
+                  const linkedinMatch = line.match(/linkedin\.com\/[^\s)"]+/i);
                   manualEntry = {
                     github: user,
                     nombre: nameMatch ? nameMatch[1].trim() : user,
                     rol: parts[2] || 'Tripulante de la Comunidad',
                     linkedin: linkedinMatch ? cleanLinkedin('https://' + linkedinMatch[0]) : '',
                     redes: [],
-                    rango: newRank,
-                    motivacion: parts[5] || `Aporte en PR #${pr.number}: ${pr.title.replace(/\|/g, '')}`
+                    rango: '⛵ Marinero',
+                    motivacion: parts[parts.length - 2] || `Aporte en PR #${pr.number}: ${pr.title.replace(/\|/g, '')}`
                   };
                 }
               }
             }
 
             const existingIndex = data.findIndex(item => item.github.toLowerCase() === user.toLowerCase());
-            let updated = false;
-
-            if (existingIndex >= 0) {
-              // Asegurar que la capitalización del usuario coincida con GitHub
-              if (data[existingIndex].github !== user) {
-                data[existingIndex].github = user;
-                updated = true;
-              }
-              if (data[existingIndex].rango !== newRank) {
-                data[existingIndex].rango = newRank;
-                updated = true;
-              }
-              if (manualEntry) {
-                if (data[existingIndex].rol === 'Tripulante de la Comunidad' && manualEntry.rol !== 'Tripulante de la Comunidad') {
-                  data[existingIndex].rol = manualEntry.rol;
-                  updated = true;
-                }
-                if (!data[existingIndex].linkedin && manualEntry.linkedin) {
-                  data[existingIndex].linkedin = manualEntry.linkedin;
-                  updated = true;
-                }
-              }
-            } else {
-              // Si no estaba en asistentes.json, agregarlo con el estándar oficial
+            if (existingIndex < 0) {
               data.push(
                 manualEntry || {
                   github: user,
@@ -130,32 +88,38 @@ jobs:
                   rol: 'Tripulante de la Comunidad',
                   linkedin: '',
                   redes: [],
-                  rango: newRank,
+                  rango: '⛵ Marinero',
                   motivacion: `Aporte en PR #${pr.number}: ${pr.title.replace(/\|/g, '')}`
                 }
               );
-              updated = true;
             }
 
-            // Regenerar siempre ASISTENTES.md desde asistentes.json para garantizar el estándar 100%
-            const renderedMd = renderAsistentesMarkdown(data);
-            if (renderedMd !== mdContent) {
-              updated = true;
-            }
+            const officialChallenges = discoverOfficialChallenges();
+            const userEval = evaluateUserProgress(user, officialChallenges);
 
-            if (updated) {
-              fs.writeFileSync('asistentes.json', JSON.stringify(data, null, 2) + '\n', 'utf8');
-              fs.writeFileSync('ASISTENTES.md', renderedMd, 'utf8');
-              if (fs.existsSync('README.md')) {
-                const readme = fs.readFileSync('README.md', 'utf8');
-                fs.writeFileSync('README.md', updateReadmeWithMosaic(data, readme), 'utf8');
-              }
-              core.setOutput('has_updates', 'true');
-              core.setOutput('new_rank', newRank);
-              core.setOutput('count', mergedCount.toString());
-            } else {
-              core.setOutput('has_updates', 'false');
-            }
+            syncAllFiles(data);
+
+            const mdAfter = fs.readFileSync('ASISTENTES.md', 'utf8');
+            const readmeAfter = fs.existsSync('README.md') ? fs.readFileSync('README.md', 'utf8') : '';
+
+            const reportLines = userEval.detailedReport
+              .filter(r => r.solvedCount > 0)
+              .map(r => {
+                if (r.isComplete) {
+                  return `- ✅ **${r.weekKey}:** \`${r.solvedCount}/${r.totalExpected} retos validados\` *(¡Semana 100% completada! +50 XP)*`;
+                }
+                return `- ⏳ **${r.weekKey} (Incompleta):** \`${r.solvedCount}/${r.totalExpected} retos validados\` *(Faltan por resolver/corregir: ${r.missingNums.join(', ')} — suma +50 XP al completar todos)*`;
+              });
+
+            const reportMarkdown =
+              reportLines.length > 0
+                ? reportLines.join('\n')
+                : '- 📝 **Registro en el Muro de la Tripulación:** `+10 XP`';
+
+            core.setOutput('has_updates', (mdBefore !== mdAfter || readmeBefore !== readmeAfter) ? 'true' : 'false');
+            core.setOutput('new_rank', userEval.rango);
+            core.setOutput('points', userEval.points.toString());
+            core.setOutput('report', reportMarkdown);
 
       - name: 💾 Guardar cambios en el repositorio
         if: steps.calcular.outputs.has_updates == 'true'
@@ -164,26 +128,34 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add asistentes.json ASISTENTES.md README.md
           if ! git diff --staged --quiet; then
-            git commit -m "chore(gamificacion): actualizar rango de navegación de @${{ github.event.pull_request.user.login }} a ${{ steps.calcular.outputs.new_rank }} [skip ci]"
+            git commit -m "chore(gamificacion): actualizar puntaje de @${{ github.event.pull_request.user.login }} (${{ steps.calcular.outputs.points }} XP - ${{ steps.calcular.outputs.new_rank }}) [skip ci]"
             git pull --rebase origin ${{ github.event.repository.default_branch }}
             git push origin HEAD:${{ github.event.repository.default_branch }}
           fi
 
-      - name: 📣 Felicitar al contribuyente en el Pull Request
-        if: steps.calcular.outputs.has_updates == 'true'
+      - name: 📣 Publicar reporte de evaluación y puntaje en el Pull Request
         uses: actions/github-script@v9
         with:
           script: |
             const user = context.payload.pull_request.user.login;
             const rank = '${{ steps.calcular.outputs.new_rank }}';
-            const count = '${{ steps.calcular.outputs.count }}';
+            const points = '${{ steps.calcular.outputs.points }}';
+            const report = `${{ steps.calcular.outputs.report }}`;
+
+            if (!points) return;
 
             const comment = `### 🏆 ¡Felicidades @${user}! Tu Pull Request ha sido fusionado con éxito.
-            
-            🎖️ **Tu rango de navegación ha sido actualizado automáticamente en el [Muro de Asistentes](https://github.com/${context.repo.owner}/${context.repo.repo}/blob/main/ASISTENTES.md):**
-            👉 **${rank}** *(Total de aportes fusionados: ${count})*
-            
-            ¡Gracias por navegar y construir en comunidad con **Cloud Native Medellín**! 🏔️☕⚓`;
+
+            📊 **Reporte de Evaluación de tus Ejercicios y Puntaje:**
+            - 🎖️ **Rango actual:** **${rank}**
+            - ⚡ **Puntaje Total:** **${points} XP**
+
+            #### 📋 Detalle por semana:
+            ${report}
+
+            > 💡 *Recuerda: Para que una semana cuente como **100% Completada** y otorgue el bono de **+20 XP** (necesario para ascender a **🧭 Timonel** y **⚓ Capitán K8s**), debes incluir la solución de **todos los ejercicios** de esa semana dentro de tu carpeta \`aportes-comunidad/soluciones-retos/${user}/semana-XX/\`.*
+
+            👉 **[Ver la Tabla de Posiciones en ASISTENTES.md](https://github.com/${context.repo.owner}/${context.repo.repo}/blob/main/ASISTENTES.md)**`;
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,

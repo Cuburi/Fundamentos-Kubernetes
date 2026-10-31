@@ -1,18 +1,18 @@
-name: "⛵ Registro en el Muro de Asistentes"
-description: "Regístrate en un clic en el Muro Oficial de la Tripulación de Cloud Native Medellín (sin código ni conflictos)"
-title: "⛵ Registro de Tripulante: [Escribe aquí tu Nombre]"
+name: "⛵ Registro o Actualización en el Muro de Asistentes"
+description: "Regístrate por primera vez o actualiza tus datos/redes sociales en el Muro Oficial de la Tripulación"
+title: "⛵ Registro / Actualización de Tripulante: [Escribe aquí tu Nombre]"
 labels: ["registro-asistente"]
 body:
   - type: markdown
     attributes:
       value: |
         ### 🙌 ¡Bienvenido/a a bordo de **De Cero a Capitán en Kubernetes**! 🏔️☕
-        **¡Estás en el lugar correcto!** No necesitas tocar código para registrarte aquí. Solo sigue estos pasos:
+        **¡Estás en el lugar correcto!** Usa este formulario tanto si te vas a **registrar por primera vez** como si quieres **actualizar tu nombre, rol o redes sociales** (tu puntaje XP acumulado se conservará intacto).
         1. **Title (Título arriba):** Puedes dejarlo como está o reemplazar `[Escribe aquí tu Nombre]` por tu nombre.
         2. **Completa las casillas de abajo** (las que tienen `*` rojo son obligatorias).
         3. **Baja hasta el final de la página** y haz clic en el botón verde **`Create`** (o **`Submit new issue`**).
         
-        🤖 **¿Qué pasará después?** En unos 15 segundos, nuestro robot verificará tu usuario, pondrá tu foto de perfil oficial de GitHub y te agregará automáticamente a la tabla de **[`ASISTENTES.md`](https://github.com/edwinbermudez91/Fundamentos-Kubernetes/blob/main/ASISTENTES.md)** con tu rango de **⛵ Marinero**.
+        🤖 **¿Qué pasará después?** En unos 15 segundos, nuestro robot verificará tu usuario, pondrá tu foto de perfil oficial de GitHub y actualizará la tabla de **[`ASISTENTES.md`](https://github.com/edwinbermudez91/Fundamentos-Kubernetes/blob/main/ASISTENTES.md)** y la portada del repositorio.
 
   - type: input
     id: nombre

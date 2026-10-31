@@ -1,4 +1,4 @@
-name: 📝 Registro Automático desde Formulario (Issue Form)
+name: 📝 Registro y Actualización Automática desde Formulario (Issue Form)
 
 on:
   issues:
@@ -10,8 +10,8 @@ permissions:
 
 jobs:
   procesar-registro:
-    name: Procesar Formulario y Actualizar ASISTENTES.md
-    if: contains(github.event.issue.labels.*.name, 'registro-asistente') || startsWith(github.event.issue.title, '⛵ Registro de Tripulante:')
+    name: Procesar Formulario y Actualizar Ranking
+    if: contains(github.event.issue.labels.*.name, 'registro-asistente') || startsWith(github.event.issue.title, '⛵ Registro')
     runs-on: ubuntu-24.04
     steps:
       - name: 📥 Clonar repositorio
@@ -20,7 +20,7 @@ jobs:
           ref: ${{ github.event.repository.default_branch }}
           fetch-depth: 0
 
-      - name: 🛠️ Extraer datos del formulario y actualizar asistentes.json + ASISTENTES.md
+      - name: 🛠️ Extraer datos del formulario y actualizar asistentes.json + ASISTENTES.md + README.md
         id: registro
         uses: actions/github-script@v9
         with:
@@ -30,15 +30,13 @@ jobs:
               cleanGithubUser,
               cleanLinkedin,
               parseExtraSocialLinks,
-              updateReadmeWithMosaic,
-              renderAsistentesMarkdown
+              syncAllFiles
             } = require('./scripts/generar-asistentes.js');
 
             const issue = context.payload.issue;
             const authorUser = issue.user.login;
             const body = issue.body || '';
 
-            // Función para extraer campos del Issue Form de GitHub (formato ### Label \n\n Valor)
             function extractField(labelFragment, preserveNewlines = false) {
               const regex = new RegExp(`###\\s+.*${labelFragment}.*\\r?\\n+([\\s\\S]*?)(?=\\r?\\n###\\s+|$)`, 'i');
               const match = body.match(regex);
@@ -85,17 +83,16 @@ jobs:
               });
             }
 
-            fs.writeFileSync('asistentes.json', JSON.stringify(data, null, 2) + '\n', 'utf8');
-            const md = renderAsistentesMarkdown(data);
-            fs.writeFileSync('ASISTENTES.md', md, 'utf8');
-            if (fs.existsSync('README.md')) {
-              const readme = fs.readFileSync('README.md', 'utf8');
-              fs.writeFileSync('README.md', updateReadmeWithMosaic(data, readme), 'utf8');
-            }
+            const { students } = syncAllFiles(data);
+            const currentStudent = students.find(s => s.github.toLowerCase() === user.toLowerCase());
+            const xp = currentStudent ? currentStudent.puntos : 10;
+            const rango = currentStudent ? currentStudent.rango : '⛵ Marinero';
 
             core.setOutput('user', user);
             core.setOutput('nombre', nombre);
             core.setOutput('action_type', actionType);
+            core.setOutput('xp', xp.toString());
+            core.setOutput('rango', rango);
 
       - name: 💾 Guardar cambios en el repositorio
         run: |
@@ -118,14 +115,16 @@ jobs:
             const user = '${{ steps.registro.outputs.user }}';
             const nombre = '${{ steps.registro.outputs.nombre }}';
             const actionType = '${{ steps.registro.outputs.action_type }}';
+            const xp = '${{ steps.registro.outputs.xp }}';
+            const rango = '${{ steps.registro.outputs.rango }}';
 
             const comment = `### ⛵ ¡Bienvenido/a a bordo, **${nombre}** (@${user})! 🏔️☕
 
-            Tu perfil ha sido **${actionType} automáticamente** en el **[Muro Oficial de Asistentes (\`ASISTENTES.md\`)](https://github.com/${context.repo.owner}/${context.repo.repo}/blob/main/ASISTENTES.md)** con tu foto oficial de GitHub y tus redes profesionales.
+            Tu perfil ha sido **${actionType} automáticamente** en el **[Muro Oficial de Asistentes (\`ASISTENTES.md\`)](https://github.com/${context.repo.owner}/${context.repo.repo}/blob/main/ASISTENTES.md)** y en el **Mosaico de la Portada** con tu foto oficial de GitHub y tus redes profesionales.
 
-            🎖️ **Rango actual:** **⛵ Marinero**
+            🎖️ **Rango actual:** **${rango}** (**${xp} XP**)
 
-            > 💡 *Cerramos este formulario automáticamente porque tu registro ya quedó publicado en la rama principal. Si en algún momento deseas actualizar tus datos o agregar más redes, solo vuelve a abrir un formulario nuevo.*`;
+            > 💡 *Cerramos este formulario automáticamente porque tus datos ya quedaron publicados. Si en algún momento deseas actualizar tu información o agregar más redes sociales, puedes volver a llenar el formulario cuando quieras.*`;
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,

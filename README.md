@@ -20,7 +20,8 @@
 [🤖 Guía de Ollama](./recursos/guia-ollama-ia-local.md) •
 [🚀 Empezar Ahora](#paso-0-prepara-tu-laboratorio) •
 [🗺️ Mapa de Ruta](#️-mapa-de-ruta) •
-[🏆 Rangos de Navegación](#-rangos-de-navegación-gamificación) •
+[🏆 Rangos y Premios](#-rangos-de-navegación-y-puntaje-gamificación) •
+[🎁 Patrocinadores](#-patrocinadores-y-premios) •
 [🤝 Cómo Contribuir](#-cómo-contribuir-al-repositorio)
 
 </div>
@@ -122,283 +123,292 @@ Si no puedes instalar Docker Desktop o tu máquina no tiene suficiente memoria R
 ---
 
 <!-- INICIO_MOSAICO_TRIPULACION -->
-## 👥 Tripulación a Bordo (34 Navegantes)
+## 👥 Tripulación a Bordo y Ranking (33 Tripulantes)
 
 <div align="center">
 
-[![Tripulantes a Bordo](https://img.shields.io/badge/⛵_Tripulantes_a_Bordo-34-00C7B7?style=for-the-badge)](./ASISTENTES.md)
+[![Tripulantes a Bordo](https://img.shields.io/badge/⛵_Tripulantes_a_Bordo-33-00C7B7?style=for-the-badge)](./ASISTENTES.md)
 [![Registrarme en 30 seg](https://img.shields.io/badge/➕_¡Regístrate_Aquí!_(Formulario_Visual)-2ea44f?style=for-the-badge&logo=github)](https://github.com/edwinbermudez91/Fundamentos-Kubernetes/issues/new?template=registro-asistente.yml)
-[![Ver Muro Completo](https://img.shields.io/badge/📋_Ver_Muro_y_Redes_Profesionales-326CE5?style=for-the-badge)](./ASISTENTES.md)
+[![Actualizar mis Datos](https://img.shields.io/badge/✏️_Actualizar_mis_Datos_o_Redes-f57c00?style=for-the-badge&logo=github)](https://github.com/edwinbermudez91/Fundamentos-Kubernetes/issues/new?template=registro-asistente.yml)
+[![Ver Ranking Completo](https://img.shields.io/badge/🏆_Ver_Tabla_de_Puntajes_y_Redes-326CE5?style=for-the-badge)](./ASISTENTES.md)
 
 <table>
   <tr>
     <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/edwin-bermudez-cuervo" title="Edwin Bermúdez (@edwinbermudez91)">
-        <img src="https://github.com/edwinbermudez91.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="edwinbermudez91"/><br/>
-        <sub><b>Edwin Bermúdez</b></sub>
-      </a><br/>
-      <sub>⚓ Capitán K8s</sub>
-    </td>
-    <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/glgaviria" title="Gloria Gaviria (@glgaviria64)">
+      <a href="https://www.linkedin.com/in/glgaviria" title="Gloria Gaviria (@glgaviria64) — 10 XP">
         <img src="https://github.com/glgaviria64.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="glgaviria64"/><br/>
         <sub><b>Gloria Gaviria</b></sub>
       </a><br/>
-      <sub>🧭 Timonel</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
     <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/cristian-camilo-sanchez-bermudez" title="Cristian Sanchez (@ccsanchezb04)">
+      <a href="https://www.linkedin.com/in/cristian-camilo-sanchez-bermudez" title="Cristian Sanchez (@ccsanchezb04) — 10 XP">
         <img src="https://github.com/ccsanchezb04.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="ccsanchezb04"/><br/>
         <sub><b>Cristian Sanchez</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
     <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/luis-tapasco/" title="Luis Tapasco (@Luistapasco)">
+      <a href="https://www.linkedin.com/in/luis-tapasco/" title="Luis Tapasco (@Luistapasco) — 10 XP">
         <img src="https://github.com/Luistapasco.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="Luistapasco"/><br/>
         <sub><b>Luis Tapasco</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
     <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/dlapaz" title="Eduardo D. La paz (@VivaGarp)">
+      <a href="https://www.linkedin.com/in/dlapaz" title="Eduardo D. La paz (@VivaGarp) — 10 XP">
         <img src="https://github.com/VivaGarp.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="VivaGarp"/><br/>
         <sub><b>Eduardo D.</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
     <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/pvargasrodriguez/" title="Paola Vargas (@ypaolavar)">
+      <a href="https://www.linkedin.com/in/pvargasrodriguez/" title="Paola Vargas (@ypaolavar) — 10 XP">
         <img src="https://github.com/ypaolavar.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="ypaolavar"/><br/>
         <sub><b>Paola Vargas</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
-  </tr>
-  <tr>
     <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/juan-jose-jaramillo-a8966123a/" title="Juan Jose Jaramillo (@jujo23z)">
+      <a href="https://www.linkedin.com/in/juan-jose-jaramillo-a8966123a/" title="Juan Jose Jaramillo (@jujo23z) — 10 XP">
         <img src="https://github.com/jujo23z.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="jujo23z"/><br/>
         <sub><b>Juan Jose</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
+  </tr>
+  <tr>
     <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/jeraldin-caliz/" title="Jeraldin Caliz (@Jera26)">
+      <a href="https://www.linkedin.com/in/jeraldin-caliz/" title="Jeraldin Caliz (@Jera26) — 10 XP">
         <img src="https://github.com/Jera26.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="Jera26"/><br/>
         <sub><b>Jeraldin Caliz</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
     <td align="center" width="140">
-      <a href="https://linkedin.com/in/maria-nathali-anzola" title="Nathali Anzola (@marnathali)">
+      <a href="https://linkedin.com/in/maria-nathali-anzola" title="Nathali Anzola (@marnathali) — 10 XP">
         <img src="https://github.com/marnathali.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="marnathali"/><br/>
         <sub><b>Nathali Anzola</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
     <td align="center" width="140">
-      <a href="https://linkedin.com/in/kevindazar" title="Kevin Daza (@kevindazardev)">
+      <a href="https://linkedin.com/in/kevindazar" title="Kevin Daza (@kevindazardev) — 10 XP">
         <img src="https://github.com/kevindazardev.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="kevindazardev"/><br/>
         <sub><b>Kevin Daza</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
     <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/jcrvillamizar" title="Juan Carlos Rodriguez Villamizar (@jcrvillamizar)">
+      <a href="https://www.linkedin.com/in/jcrvillamizar" title="Juan Carlos Rodriguez Villamizar (@jcrvillamizar) — 10 XP">
         <img src="https://github.com/jcrvillamizar.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="jcrvillamizar"/><br/>
         <sub><b>Juan Carlos</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
     <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/airy-nc/" title="Airy Nieves (@aiops88)">
+      <a href="https://www.linkedin.com/in/airy-nc/" title="Airy Nieves (@aiops88) — 10 XP">
         <img src="https://github.com/aiops88.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="aiops88"/><br/>
         <sub><b>Airy Nieves</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
-  </tr>
-  <tr>
     <td align="center" width="140">
-      <a href="https://linkedin.com/in/dupegui" title="David Upegui (@DavidUpegui)">
+      <a href="https://linkedin.com/in/dupegui" title="David Upegui (@DavidUpegui) — 10 XP">
         <img src="https://github.com/DavidUpegui.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="DavidUpegui"/><br/>
         <sub><b>David Upegui</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
+  </tr>
+  <tr>
     <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/juandavidcorrales/" title="David Corrales (@devdavco)">
+      <a href="https://www.linkedin.com/in/juandavidcorrales/" title="David Corrales (@devdavco) — 10 XP">
         <img src="https://github.com/devdavco.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="devdavco"/><br/>
         <sub><b>David Corrales</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
     <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/ymqc01" title="Yeison Mateo Quintero Carmona (@mateoqc123)">
+      <a href="https://www.linkedin.com/in/ymqc01" title="Yeison Mateo Quintero Carmona (@mateoqc123) — 10 XP">
         <img src="https://github.com/mateoqc123.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="mateoqc123"/><br/>
         <sub><b>Yeison Mateo</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
     <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/johan-andres-lopez-zuluaga" title="Johan Andrés López Zuluaga (@parte193)">
+      <a href="https://www.linkedin.com/in/johan-andres-lopez-zuluaga" title="Johan Andrés López Zuluaga (@parte193) — 10 XP">
         <img src="https://github.com/parte193.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="parte193"/><br/>
         <sub><b>Johan Andrés</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
     <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/diego-mona/" title="Diego Moná (@Hedache77)">
+      <a href="https://www.linkedin.com/in/diego-mona/" title="Diego Moná (@Hedache77) — 10 XP">
         <img src="https://github.com/Hedache77.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="Hedache77"/><br/>
         <sub><b>Diego Moná</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
     <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/JhonnyPong/" title="Jhonnatan Gil (@jthan24)">
+      <a href="https://www.linkedin.com/in/JhonnyPong/" title="Jhonnatan Gil (@jthan24) — 10 XP">
         <img src="https://github.com/jthan24.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="jthan24"/><br/>
         <sub><b>Jhonnatan Gil</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
-  </tr>
-  <tr>
     <td align="center" width="140">
-      <a href="https://github.com/karolrojas68" title="Karol Rojas (@karolrojas68)">
+      <a href="https://github.com/karolrojas68" title="Karol Rojas (@karolrojas68) — 10 XP">
         <img src="https://github.com/karolrojas68.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="karolrojas68"/><br/>
         <sub><b>Karol Rojas</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
+  </tr>
+  <tr>
     <td align="center" width="140">
-      <a href="https://linkedin.com/in/danielestebanosoriodavid/" title="Daniel Esteban (@da237)">
+      <a href="https://linkedin.com/in/danielestebanosoriodavid/" title="Daniel Esteban (@da237) — 10 XP">
         <img src="https://github.com/da237.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="da237"/><br/>
         <sub><b>Daniel Esteban</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
     <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/yorman-agudelo/" title="Yorman Agudelo (@Cuburi)">
+      <a href="https://www.linkedin.com/in/yorman-agudelo/" title="Yorman Agudelo (@Cuburi) — 10 XP">
         <img src="https://github.com/Cuburi.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="Cuburi"/><br/>
         <sub><b>Yorman Agudelo</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
     <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/stiven-munera-quintero-80151721a/" title="Stiven Munera (@StivenMunera)">
+      <a href="https://www.linkedin.com/in/stiven-munera-quintero-80151721a/" title="Stiven Munera (@StivenMunera) — 10 XP">
         <img src="https://github.com/StivenMunera.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="StivenMunera"/><br/>
         <sub><b>Stiven Munera</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
     <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/giovanigonzalogarzonsegura-cloudarchitect" title="Gonzalo Garzon (@ggarzons)">
+      <a href="https://www.linkedin.com/in/giovanigonzalogarzonsegura-cloudarchitect" title="Gonzalo Garzon (@ggarzons) — 10 XP">
         <img src="https://github.com/ggarzons.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="ggarzons"/><br/>
         <sub><b>Gonzalo Garzon</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
     <td align="center" width="140">
-      <a href="https://linkedin.com/in/maria-camila-zapata-arrubla-a594041b1/" title="Maria Camila Zapata Arrubla (@Camilaux)">
+      <a href="https://linkedin.com/in/maria-camila-zapata-arrubla-a594041b1/" title="Maria Camila Zapata Arrubla (@Camilaux) — 10 XP">
         <img src="https://github.com/Camilaux.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="Camilaux"/><br/>
         <sub><b>Maria Camila</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
-  </tr>
-  <tr>
     <td align="center" width="140">
-      <a href="https://linkedin.com/in/cristian-gonzalez-9b646a265/" title="Cristian Gonzalez (@CristianCGonzalezO)">
+      <a href="https://linkedin.com/in/cristian-gonzalez-9b646a265/" title="Cristian Gonzalez (@CristianCGonzalezO) — 10 XP">
         <img src="https://github.com/CristianCGonzalezO.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="CristianCGonzalezO"/><br/>
         <sub><b>Cristian Gonzalez</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
-    </td>
-    <td align="center" width="140">
-      <a href="https://linkedin.com/in/santiagoasz/" title="Santiago Sanchez (@santiagoalex)">
-        <img src="https://github.com/santiagoalex.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="santiagoalex"/><br/>
-        <sub><b>Santiago Sanchez</b></sub>
-      </a><br/>
-      <sub>⛵ Marinero</sub>
-    </td>
-    <td align="center" width="140">
-      <a href="https://github.com/sanjavier88" title="Jorge Alberto Monsalve Ruiz (@sanjavier88)">
-        <img src="https://github.com/sanjavier88.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="sanjavier88"/><br/>
-        <sub><b>Jorge Alberto</b></sub>
-      </a><br/>
-      <sub>⛵ Marinero</sub>
-    </td>
-    <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/mao-correa/" title="Hector Mauricio Forero Correa (@maocorrea1015)">
-        <img src="https://github.com/maocorrea1015.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="maocorrea1015"/><br/>
-        <sub><b>Hector Mauricio</b></sub>
-      </a><br/>
-      <sub>⛵ Marinero</sub>
-    </td>
-    <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/raymundo-avila-r-04775932" title="Fernando Avila (@RAVILA28)">
-        <img src="https://github.com/RAVILA28.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="RAVILA28"/><br/>
-        <sub><b>Fernando Avila</b></sub>
-      </a><br/>
-      <sub>⛵ Marinero</sub>
-    </td>
-    <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/wilfredo-gonzalez-ortiz-5718a2161/" title="Wilfredo Gonzalez (@wilfredogonzalez05)">
-        <img src="https://github.com/wilfredogonzalez05.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="wilfredogonzalez05"/><br/>
-        <sub><b>Wilfredo Gonzalez</b></sub>
-      </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
   </tr>
   <tr>
     <td align="center" width="140">
-      <a href="https://github.com/Danielgiraldo2010" title="Daniel Giraldo (@Danielgiraldo2010)">
+      <a href="https://linkedin.com/in/santiagoasz/" title="Santiago Sanchez (@santiagoalex) — 10 XP">
+        <img src="https://github.com/santiagoalex.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="santiagoalex"/><br/>
+        <sub><b>Santiago Sanchez</b></sub>
+      </a><br/>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
+    </td>
+    <td align="center" width="140">
+      <a href="https://github.com/sanjavier88" title="Jorge Alberto Monsalve Ruiz (@sanjavier88) — 10 XP">
+        <img src="https://github.com/sanjavier88.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="sanjavier88"/><br/>
+        <sub><b>Jorge Alberto</b></sub>
+      </a><br/>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
+    </td>
+    <td align="center" width="140">
+      <a href="https://www.linkedin.com/in/mao-correa/" title="Hector Mauricio Forero Correa (@maocorrea1015) — 10 XP">
+        <img src="https://github.com/maocorrea1015.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="maocorrea1015"/><br/>
+        <sub><b>Hector Mauricio</b></sub>
+      </a><br/>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
+    </td>
+    <td align="center" width="140">
+      <a href="https://www.linkedin.com/in/raymundo-avila-r-04775932" title="Fernando Avila (@RAVILA28) — 10 XP">
+        <img src="https://github.com/RAVILA28.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="RAVILA28"/><br/>
+        <sub><b>Fernando Avila</b></sub>
+      </a><br/>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
+    </td>
+    <td align="center" width="140">
+      <a href="https://www.linkedin.com/in/wilfredo-gonzalez-ortiz-5718a2161/" title="Wilfredo Gonzalez (@wilfredogonzalez05) — 10 XP">
+        <img src="https://github.com/wilfredogonzalez05.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="wilfredogonzalez05"/><br/>
+        <sub><b>Wilfredo Gonzalez</b></sub>
+      </a><br/>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
+    </td>
+    <td align="center" width="140">
+      <a href="https://github.com/Danielgiraldo2010" title="Daniel Giraldo (@Danielgiraldo2010) — 10 XP">
         <img src="https://github.com/Danielgiraldo2010.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="Danielgiraldo2010"/><br/>
         <sub><b>Daniel Giraldo</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
+  </tr>
+  <tr>
     <td align="center" width="140">
-      <a href="https://linkedin.com/in/emmanuel-uribe-89890525a" title="Emmanuel Uribe (@emmanuel-uribe)">
+      <a href="https://linkedin.com/in/emmanuel-uribe-89890525a" title="Emmanuel Uribe (@emmanuel-uribe) — 10 XP">
         <img src="https://github.com/emmanuel-uribe.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="emmanuel-uribe"/><br/>
         <sub><b>Emmanuel Uribe</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
     <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/david-garcia-51597469/" title="David García (@manuonda)">
+      <a href="https://www.linkedin.com/in/david-garcia-51597469/" title="David García (@manuonda) — 10 XP">
         <img src="https://github.com/manuonda.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="manuonda"/><br/>
         <sub><b>David García</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
     <td align="center" width="140">
-      <a href="https://www.linkedin.com/in/jcgiraldogo/" title="Camilo Giraldo (@Camilogigom)">
+      <a href="https://www.linkedin.com/in/jcgiraldogo/" title="Camilo Giraldo (@Camilogigom) — 10 XP">
         <img src="https://github.com/Camilogigom.png?size=100" width="64" height="64" style="border-radius: 50%;" alt="Camilogigom"/><br/>
         <sub><b>Camilo Giraldo</b></sub>
       </a><br/>
-      <sub>⛵ Marinero</sub>
+      <sub>⛵ Marinero • <b>10 XP</b></sub>
     </td>
   </tr>
 </table>
 
-<sub>💡 <b>¿Aún no apareces aquí?</b> Haz clic en <a href="https://github.com/edwinbermudez91/Fundamentos-Kubernetes/issues/new?template=registro-asistente.yml"><b>➕ ¡Regístrate Aquí!</b></a> y nuestro bot agregará tu foto automáticamente en 15 segundos.</sub>
+<sub>💡 <b>¿Aún no apareces aquí o quieres actualizar tu LinkedIn/Redes?</b> Haz clic en <a href="https://github.com/edwinbermudez91/Fundamentos-Kubernetes/issues/new?template=registro-asistente.yml"><b>➕ Registrarme / ✏️ Actualizar mis Datos</b></a> y nuestro bot actualizará tu tarjeta automáticamente en 15 segundos.</sub>
 
 </div>
 <!-- FIN_MOSAICO_TRIPULACION -->
 
 ---
 
-## 🏆 Rangos de Navegación (Gamificación)
+## 🏆 Rangos de Navegación y Puntaje (Gamificación)
 
-En cada carpeta semanal encontrarás una subcarpeta llamada **`reto-roto/`**. Son manifiestos YAML que tienen errores de la vida real puestos a propósito. 
+En cada carpeta semanal encontrarás una subcarpeta llamada **`2.reto-roto/`**. Son manifiestos y escenarios con errores de la vida real puestos a propósito. 
 
-A medida que envíes tus Pull Requests (PRs) resolviendo retos o mejorando apuntes, irás subiendo en los **rangos de navegación** del [`ASISTENTES.md`](./ASISTENTES.md):
+A medida que envíes tus Pull Requests (PRs) resolviendo **todos los retos rotos de cada semana**, nuestro bot validará tus soluciones y sumará puntos (**XP**) en la tabla de posiciones de [`ASISTENTES.md`](./ASISTENTES.md):
 
-* ⛵ **Marinero (1 PR):** Te uniste a la tripulación en `ASISTENTES.md` y zarpó tu primer Pod.
-* 🧭 **Timonel (3 PRs):** Tomaste el timón de la nave, resolviste al menos 2 *Retos Rotos* o aportaste al *Cheatsheet*.
-* ⚓ **Capitán K8s (6+ PRs):** Dominas la navegación del clúster, completaste las 6 semanas de la travesía y el proyecto final.
+* ⛵ **Marinero (10 XP):** Te registraste en el Muro de la Tripulación en `ASISTENTES.md`.
+* 🧭 **Timonel (110+ XP — 2+ Semanas Completadas al 100%):** Resolviste y validaste **todos** los ejercicios de los *Retos Rotos* de al menos 2 semanas (+50 XP por cada semana completada).
+* ⚓ **Capitán K8s (310+ XP — 6 Semanas Completadas al 100%):** Dominas la navegación del clúster, completaste todos los retos de las 6 semanas y el proyecto final.
+
+---
+
+## 🎁 Patrocinadores y Premios
+
+Gracias al apoyo de nuestros aliados y patrocinadores, los tripulantes más destacados en la **Tabla de Posiciones (XP)** que completen los retos semanales participarán por premios e incentivos especiales para impulsar su carrera profesional y técnica:
+
+<div align="center">
+
+| 🏛️ Fundación Antivirus para la Deserción | 🧪 iximiuz Labs |
+| :---: | :---: |
+| [![Fundación Antivirus para la Deserción](https://img.shields.io/badge/Fundación_Antivirus_para_la_Deserción-Impulso_Educativo_y_Talento-0A66C2?style=for-the-badge)](https://www.fundacionantivirusparaladesercion.org/es) | [![iximiuz Labs](https://img.shields.io/badge/iximiuz_Labs-Laboratorios_Cloud_Native_Interactivos-2ea44f?style=for-the-badge)](https://labs.iximiuz.com/) |
+| Acompañamiento, mentoría y oportunidades para potenciar la permanencia estudiantil y el crecimiento profesional.<br>👉 **[fundacionantivirusparaladesercion.org/es](https://www.fundacionantivirusparaladesercion.org/es)** | Plataforma interactiva de laboratorios prácticos en contenedores, Linux, Kubernetes y DevOps.<br>👉 **[labs.iximiuz.com](https://labs.iximiuz.com/)** |
+
+</div>
 
 ---
 
