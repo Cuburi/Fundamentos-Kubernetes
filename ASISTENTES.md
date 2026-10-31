@@ -22,40 +22,71 @@ En este workshop no importa si nunca has abierto una terminal de Linux o si llev
 
 A medida que avances semana a semana y aportes al repositorio, nuestro bot de GitHub Actions actualizará **automáticamente** tu rango en este muro:
 
-|       Rango        |    Requisito     | Lo que representa en la travesía                                                   |
-| :----------------: | :--------------: | :--------------------------------------------------------------------------------- |
-|  **⛵ Marinero**   |  1 PR aprobado   | Te registraste en este muro y zarpó tu primer Pod en el clúster.                   |
-|   **🧭 Timonel**   | 3 PRs aprobados  | Tomaste el timón de la nave, resolviste _Retos Rotos_ o aportaste al _Cheatsheet_. |
-| **⚓ Capitán K8s** | 6+ PRs aprobados | Dominas la navegación del clúster, completaste las 6 semanas y el proyecto final.  |
+|       Rango        |        Requisito         | Lo que representa en la travesía                                                   |
+| :----------------: | :----------------------: | :--------------------------------------------------------------------------------- |
+|  **⛵ Marinero**   | Registro o 1 PR aprobado | Te registraste en este muro y zarpó tu primer Pod en el clúster.                   |
+|   **🧭 Timonel**   |     3 PRs aprobados      | Tomaste el timón de la nave, resolviste _Retos Rotos_ o aportaste al _Cheatsheet_. |
+| **⚓ Capitán K8s** |     6+ PRs aprobados     | Dominas la navegación del clúster, completaste las 6 semanas y el proyecto final.  |
 
 ---
 
-## 📝 ¿Cómo agregar tu nombre a este Muro?
+## 📝 ¿Cómo agregar tu nombre a este Muro? (Guía paso a paso para principiantes)
 
-1. Crea tu rama con tu usuario de GitHub siguiendo la [Guía de Contribución (`CONTRIBUTING.md`)](./CONTRIBUTING.md):
+Tienes **2 formas** de registrarte. Si estás empezando o no quieres pelearte con código, **usa la Opción 1 (Formulario Visual)**: toma menos de 1 minuto y es imposible equivocarse.
+
+### 🚀 Opción 1: Formulario Visual Automático (Recomendada — Sin tocar código)
+
+No necesitas instalar nada ni descargar el proyecto en tu computador. Solo sigue estos **5 pasos**:
+
+1. **Inicia sesión en GitHub:** Asegúrate de haber iniciado sesión con tu cuenta en [github.com](https://github.com).
+2. **Abre el formulario directo:** Haz clic en este botón (se abrirá una ventana de GitHub con casillas para rellenar):
+   👉 **[⛵ CLIC AQUÍ PARA ABRIR EL FORMULARIO DE REGISTRO](https://github.com/edwinbermudez91/Fundamentos-Kubernetes/issues/new?template=registro-asistente.yml)**
+3. **Completa las casillas del formulario:**
+   - **Title (Título arriba):** Ya viene prellenado con `⛵ Registro de Tripulante: ...`, puedes dejarlo así o poner tu nombre al final.
+   - **1️⃣ Tu Nombre y Apellido `*`:** Escribe cómo quieres aparecer en la tabla *(ej: Ana María Gómez)*.
+   - **2️⃣ Tu Usuario de GitHub `*`:** Escribe tu usuario de GitHub sin espacios *(ej: `anagomez-dev`)*. Con este dato el robot pondrá tu foto de perfil automáticamente.
+   - **3️⃣ Tu Rol, Especialidad o Carrera `*`:** Qué haces o estudias *(ej: Estudiante, Desarrollador Jr, QA, SysAdmin)*.
+   - **4️⃣ Enlace a tu LinkedIn *(Opcional)*:** Copia y pega la dirección web de tu perfil de LinkedIn. Si no tienes, déjalo en blanco.
+   - **5️⃣ Otras Redes Sociales o Portafolio *(Opcional)*:** Si quieres mostrar tu X/Twitter, Instagram, YouTube, Medium, GitLab o página web, pega el enlace aquí. Si no, déjalo en blanco.
+   - **6️⃣ ¿Qué te motivó a unirte? `*`:** Escribe en una frase qué te gustaría aprender en el curso.
+4. **Envía el formulario:** Baja hasta el final de la página y haz clic en el botón verde que dice **`Create`** (o **`Submit new issue`**).
+5. **¡Magia automática! 🤖✨:**
+   - Espera unos **15 a 20 segundos**.
+   - Nuestro robot de GitHub Actions leerá tu formulario, validará tus enlaces, te responderá con un mensaje de bienvenida y **actualizará esta tabla automáticamente** con tu foto, tus botones de redes y tu rango de **⛵ Marinero**.
+
+> [!TIP]
+> **¿Te equivocaste en algún dato o quieres agregar otra red social después?**  
+> ¡No pasa nada! Simplemente vuelve a llenar el formulario y el robot **actualizará tu fila existente** sin duplicarte.
+
+---
+
+### 🛠️ Opción 2: Vía Pull Request desde tu terminal (Para practicar Git)
+
+Si prefieres practicar los comandos de `git` (`clone`, `branch`, `commit`, `push` y *Pull Request*):
+
+1. Crea tu rama siguiendo la [Guía de Contribución (`CONTRIBUTING.md`)](./CONTRIBUTING.md):
    ```bash
    git checkout -b TU-USUARIO/registro
    ```
-2. Abre este archivo (`ASISTENTES.md`) y pega tu fila **al final de la tabla de la tripulación**.
-3. Guarda tus cambios y sube tu PR:
-   ```bash
-   git add ASISTENTES.md
-   git commit -m "Me registro como Marinero en ASISTENTES.md"
-   git push origin TU-USUARIO/registro
+2. Abre el archivo [`asistentes.json`](./asistentes.json) y agrega tu bloque al final de la lista (antes del último `]`, recuerda poner una coma `,` después del bloque anterior):
+   ```json
+   {
+     "github": "TU-USUARIO",
+     "nombre": "Tu Nombre y Apellido",
+     "rol": "Tu Rol o Carrera",
+     "linkedin": "https://www.linkedin.com/in/tu-perfil",
+     "redes": ["https://x.com/tu-usuario", "https://tu-portafolio.dev"],
+     "rango": "⛵ Marinero",
+     "motivacion": "Tu meta o qué esperas aprender"
+   }
    ```
-4. Abre el Pull Request en GitHub. En cuanto sea aprobado y fusionado, ¡el bot te dará la bienvenida oficial!
-
-### 📋 Plantilla para copiar y pegar (Opción con foto y badges):
-
-```markdown
-| <img src="https://github.com/TU-USUARIO.png?size=50" width="32" height="32" style="border-radius: 50%; vertical-align: middle; margin-right: 8px;"> **Tu Nombre** | Tu Rol o Carrera | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/TU-USUARIO)<br>[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/tu-perfil) | ⛵ Marinero | Tu meta o qué esperas aprender |
-```
-
-_(Si prefieres no usar badges ni foto, también puedes escribir tu nombre en texto simple: `| **Tu Nombre** | Tu Rol | [@tu-usuario](url) | ⛵ Marinero | Tu meta |`)._
+3. Guarda tus cambios, sube tu rama (`git add asistentes.json`, `git commit -m "Me registro como Marinero"`, `git push`) y abre tu Pull Request en GitHub. ¡Cuando se apruebe, el robot actualizará la tabla de `ASISTENTES.md` por ti!
 
 ---
 
 ## 👥 Muro Oficial de la Tripulación
+
+<!-- INICIO_TABLA_ASISTENTES -->
 
 | 👤 Tripulante                                                                                                                                                               | 💼 Rol / Especialidad                |                                                                                                                                               🌐 Redes Profesionales                                                                                                                                                |    🎖️ Rango    | 🎯 ¿Qué te motivó a unirte?                                                        |
 | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------- | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------: | :--------------------------------------------------------------------------------- |
@@ -93,6 +124,7 @@ _(Si prefieres no usar badges ni foto, también puedes escribir tu nombre en tex
 | <img src="https://github.com/emmanuel-uribe.png?size=50" width="32" height="32" style="border-radius: 50%; vertical-align: middle; margin-right: 8px;"> **Emmanuel Uribe** | SRE / DevOps | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/emmanuel-uribe)<br>[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/emmanuel-uribe-89890525a) | ⛵ Marinero | Reforzar conocimientos y sí es posible aportar |
 | <img src="https://github.com/manuonda.png?size=50" width="32" height="32" style="border-radius: 50%; vertical-align: middle; margin-right: 8px;"> **David García** | 👨‍💻 Developer Junior | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/manuonda)<br>[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/david-garcia-51597469/)<br>[![X](https://img.shields.io/badge/X-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/manuonda1) | ⛵ Marinero | Aprender para la certificación KCNA de Kubernetes y colaborar con la comunidad.  🏔️☕ |
 | <img src="https://github.com/Camilogigom.png?size=50" width="32" height="32" style="border-radius: 50%; vertical-align: middle; margin-right: 8px;"> **Camilo Giraldo** | Estudiante | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/Camilogigom)<br>[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jcgiraldogo/) | ⛵ Marinero | Aprender sobre Docker y Kubernete. Aprovechadno al maximo estos cursos |
+<!-- FIN_TABLA_ASISTENTES -->
 
 > [!TIP]
 > **Haz Networking:**  

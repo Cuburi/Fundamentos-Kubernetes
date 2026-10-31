@@ -1,0 +1,138 @@
+name: 📝 Registro Automático desde Formulario (Issue Form)
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  procesar-registro:
+    name: Procesar Formulario y Actualizar ASISTENTES.md
+    if: contains(github.event.issue.labels.*.name, 'registro-asistente') || startsWith(github.event.issue.title, '⛵ Registro de Tripulante:')
+    runs-on: ubuntu-24.04
+    steps:
+      - name: 📥 Clonar repositorio
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
+
+      - name: 🛠️ Extraer datos del formulario y actualizar asistentes.json + ASISTENTES.md
+        id: registro
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const fs = require('fs');
+            const {
+              cleanGithubUser,
+              cleanLinkedin,
+              parseExtraSocialLinks,
+              renderAsistentesMarkdown
+            } = require('./scripts/generar-asistentes.js');
+
+            const issue = context.payload.issue;
+            const authorUser = issue.user.login;
+            const body = issue.body || '';
+
+            // Función para extraer campos del Issue Form de GitHub (formato ### Label \n\n Valor)
+            function extractField(labelFragment, preserveNewlines = false) {
+              const regex = new RegExp(`###\\s+.*${labelFragment}.*\\r?\\n+([\\s\\S]*?)(?=\\r?\\n###\\s+|$)`, 'i');
+              const match = body.match(regex);
+              if (!match) return '';
+              const val = match[1].trim();
+              if (val.toLowerCase() === '_no response_' || val.toLowerCase() === 'no response') {
+                return '';
+              }
+              return preserveNewlines ? val : val.replace(/\r?\n/g, ' ').trim();
+            }
+
+            const githubInput = extractField('Usuario de GitHub');
+            const user = cleanGithubUser(githubInput, authorUser);
+            const nombre = extractField('Nombre y Apellido') || user;
+            const rol = extractField('Rol, Especialidad o Carrera') || 'Tripulante de la Comunidad';
+            const linkedinRaw = extractField('LinkedIn');
+            const otrasRedesRaw = extractField('Otras Redes Sociales', true);
+            const motivacion = extractField('motivó a unirte') || 'Aprender y compartir en la comunidad Cloud Native Medellín.';
+
+            const linkedin = cleanLinkedin(linkedinRaw);
+            const extraRedes = parseExtraSocialLinks(otrasRedesRaw);
+
+            let data = JSON.parse(fs.readFileSync('asistentes.json', 'utf8'));
+            const existingIndex = data.findIndex(item => item.github.toLowerCase() === user.toLowerCase());
+
+            let actionType = 'registrado';
+            if (existingIndex >= 0) {
+              actionType = 'actualizado';
+              data[existingIndex].github = user;
+              data[existingIndex].nombre = nombre;
+              data[existingIndex].rol = rol;
+              data[existingIndex].linkedin = linkedin;
+              data[existingIndex].redes = extraRedes.length > 0 ? extraRedes : (data[existingIndex].redes || []);
+              data[existingIndex].motivacion = motivacion;
+            } else {
+              data.push({
+                github: user,
+                nombre: nombre,
+                rol: rol,
+                linkedin: linkedin,
+                redes: extraRedes,
+                rango: '⛵ Marinero',
+                motivacion: motivacion
+              });
+            }
+
+            fs.writeFileSync('asistentes.json', JSON.stringify(data, null, 2) + '\n', 'utf8');
+            const md = renderAsistentesMarkdown(data);
+            fs.writeFileSync('ASISTENTES.md', md, 'utf8');
+
+            core.setOutput('user', user);
+            core.setOutput('nombre', nombre);
+            core.setOutput('action_type', actionType);
+
+      - name: 💾 Guardar cambios en el repositorio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add asistentes.json ASISTENTES.md
+          if ! git diff --staged --quiet; then
+            git commit -m "chore(asistentes): ${ACTION_TYPE} tripulante @${GH_USER} desde formulario [skip ci]"
+            git pull --rebase origin ${{ github.event.repository.default_branch }}
+            git push origin HEAD:${{ github.event.repository.default_branch }}
+          fi
+        env:
+          GH_USER: ${{ steps.registro.outputs.user }}
+          ACTION_TYPE: ${{ steps.registro.outputs.action_type }}
+
+      - name: 🎉 Confirmar registro y cerrar el Issue
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const user = '${{ steps.registro.outputs.user }}';
+            const nombre = '${{ steps.registro.outputs.nombre }}';
+            const actionType = '${{ steps.registro.outputs.action_type }}';
+
+            const comment = `### ⛵ ¡Bienvenido/a a bordo, **${nombre}** (@${user})! 🏔️☕
+
+            Tu perfil ha sido **${actionType} automáticamente** en el **[Muro Oficial de Asistentes (\`ASISTENTES.md\`)](https://github.com/${context.repo.owner}/${context.repo.repo}/blob/main/ASISTENTES.md)** con tu foto oficial de GitHub y tus redes profesionales.
+
+            🎖️ **Rango actual:** **⛵ Marinero**
+
+            > 💡 *Cerramos este formulario automáticamente porque tu registro ya quedó publicado en la rama principal. Si en algún momento deseas actualizar tus datos o agregar más redes, solo vuelve a abrir un formulario nuevo.*`;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              body: comment
+            });
+
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              state: 'closed',
+              state_reason: 'completed'
+            });

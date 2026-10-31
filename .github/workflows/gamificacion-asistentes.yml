@@ -27,6 +27,7 @@ jobs:
         with:
           script: |
             const fs = require('fs');
+            const { cleanLinkedin, renderAsistentesMarkdown } = require('./scripts/generar-asistentes.js');
             const pr = context.payload.pull_request;
             const user = pr.user.login;
 
@@ -63,48 +64,88 @@ jobs:
             // Determinar rango de navegación según gamificación
             let newRank = '⛵ Marinero';
             if (mergedCount >= 6) {
-              newRank = '⚓ Capitán k8s';
+              newRank = '⚓ Capitán K8s';
             } else if (mergedCount >= 3) {
               newRank = '🧭 Timonel';
             }
 
-            let content = fs.readFileSync('ASISTENTES.md', 'utf8');
-            let lines = content.split('\n');
-            let found = false;
-            let updated = false;
+            let data = JSON.parse(fs.readFileSync('asistentes.json', 'utf8'));
 
-            lines = lines.map(line => {
-              // Proteger siempre la fila del instructor para que no se modifique
-              if (instructors.some(inst => line.toLowerCase().includes(inst))) {
-                return line;
-              }
+            // Intentar detectar si el usuario agregó una fila manualmente en ASISTENTES.md en su PR
+            // para migrar sus datos a asistentes.json sin que se pierdan ni quede fuera de formato
+            let mdContent = fs.readFileSync('ASISTENTES.md', 'utf8');
+            let mdLines = mdContent.split('\n');
+            let manualEntry = null;
+            for (const line of mdLines) {
               if (
-                line.toLowerCase().includes('@' + user.toLowerCase()) ||
-                line.toLowerCase().includes('github.com/' + user.toLowerCase())
+                line.trim().startsWith('|') &&
+                (line.toLowerCase().includes(user.toLowerCase()) || line.includes('TU-USUARIO'))
               ) {
-                found = true;
-                let parts = line.split('|');
+                const parts = line.split('|').map(p => p.trim());
                 if (parts.length >= 6) {
-                  let currentRank = parts[4].trim();
-                  if (currentRank !== newRank) {
-                    parts[4] = ' ' + newRank + ' ';
-                    updated = true;
-                    return parts.join('|');
-                  }
+                  const nameMatch = parts[1].match(/\*\*(.+?)\*\*/);
+                  const linkedinMatch = parts[3].match(/linkedin\.com\/[^\s)"]+/i);
+                  manualEntry = {
+                    github: user,
+                    nombre: nameMatch ? nameMatch[1].trim() : user,
+                    rol: parts[2] || 'Tripulante de la Comunidad',
+                    linkedin: linkedinMatch ? cleanLinkedin('https://' + linkedinMatch[0]) : '',
+                    redes: [],
+                    rango: newRank,
+                    motivacion: parts[5] || `Aporte en PR #${pr.number}: ${pr.title.replace(/\|/g, '')}`
+                  };
                 }
               }
-              return line;
-            });
+            }
 
-            // Si el usuario no estaba en la tabla, agregarlo automáticamente
-            if (!found) {
-              const newRow = `| @${user} | Tripulante de la Comunidad | [@${user}](https://github.com/${user}) | ${newRank} | Aporte en PR #${pr.number}: ${pr.title.replace(/\|/g, '')} |`;
-              lines.push(newRow);
+            const existingIndex = data.findIndex(item => item.github.toLowerCase() === user.toLowerCase());
+            let updated = false;
+
+            if (existingIndex >= 0) {
+              // Asegurar que la capitalización del usuario coincida con GitHub
+              if (data[existingIndex].github !== user) {
+                data[existingIndex].github = user;
+                updated = true;
+              }
+              if (data[existingIndex].rango !== newRank) {
+                data[existingIndex].rango = newRank;
+                updated = true;
+              }
+              if (manualEntry) {
+                if (data[existingIndex].rol === 'Tripulante de la Comunidad' && manualEntry.rol !== 'Tripulante de la Comunidad') {
+                  data[existingIndex].rol = manualEntry.rol;
+                  updated = true;
+                }
+                if (!data[existingIndex].linkedin && manualEntry.linkedin) {
+                  data[existingIndex].linkedin = manualEntry.linkedin;
+                  updated = true;
+                }
+              }
+            } else {
+              // Si no estaba en asistentes.json, agregarlo con el estándar oficial
+              data.push(
+                manualEntry || {
+                  github: user,
+                  nombre: pr.user.name || user,
+                  rol: 'Tripulante de la Comunidad',
+                  linkedin: '',
+                  redes: [],
+                  rango: newRank,
+                  motivacion: `Aporte en PR #${pr.number}: ${pr.title.replace(/\|/g, '')}`
+                }
+              );
+              updated = true;
+            }
+
+            // Regenerar siempre ASISTENTES.md desde asistentes.json para garantizar el estándar 100%
+            const renderedMd = renderAsistentesMarkdown(data);
+            if (renderedMd !== mdContent) {
               updated = true;
             }
 
             if (updated) {
-              fs.writeFileSync('ASISTENTES.md', lines.join('\n'));
+              fs.writeFileSync('asistentes.json', JSON.stringify(data, null, 2) + '\n', 'utf8');
+              fs.writeFileSync('ASISTENTES.md', renderedMd, 'utf8');
               core.setOutput('has_updates', 'true');
               core.setOutput('new_rank', newRank);
               core.setOutput('count', mergedCount.toString());
@@ -117,9 +158,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add ASISTENTES.md
-          git commit -m "chore(gamificacion): actualizar rango de navegación de @${{ github.event.pull_request.user.login }} a ${{ steps.calcular.outputs.new_rank }} [skip ci]"
-          git push origin HEAD:${{ github.event.repository.default_branch }}
+          git add asistentes.json ASISTENTES.md
+          if ! git diff --staged --quiet; then
+            git commit -m "chore(gamificacion): actualizar rango de navegación de @${{ github.event.pull_request.user.login }} a ${{ steps.calcular.outputs.new_rank }} [skip ci]"
+            git pull --rebase origin ${{ github.event.repository.default_branch }}
+            git push origin HEAD:${{ github.event.repository.default_branch }}
+          fi
 
       - name: 📣 Felicitar al contribuyente en el Pull Request
         if: steps.calcular.outputs.has_updates == 'true'

@@ -1,0 +1,310 @@
+[
+  {
+    "github": "edwinbermudez91",
+    "nombre": "Edwin Bermúdez",
+    "rol": "👨‍🏫 Instructor<br>Senior DevOps & SRE",
+    "linkedin": "https://www.linkedin.com/in/edwin-bermudez-cuervo",
+    "redes": [],
+    "rango": "⚓ Capitán K8s",
+    "motivacion": "Compartir conocimiento y fortalecer la comunidad Cloud Native en Medellín. 🏔️☕"
+  },
+  {
+    "github": "glgaviria64",
+    "nombre": "Gloria Gaviria",
+    "rol": "👩‍💻 Estudiante<br>Desarrolladora Jr",
+    "linkedin": "https://www.linkedin.com/in/glgaviria",
+    "redes": [],
+    "rango": "🧭 Timonel",
+    "motivacion": "Aprender de la comunidad de Cloud Native Medellín. 🏔️☕"
+  },
+  {
+    "github": "ccsanchezb04",
+    "nombre": "Cristian Sanchez",
+    "rol": "Desarrollador Fullstack",
+    "linkedin": "https://www.linkedin.com/in/cristian-camilo-sanchez-bermudez",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Quiero mejorar mi perfil profesional para encotrar mejores oportunidades laborales"
+  },
+  {
+    "github": "Luistapasco",
+    "nombre": "Luis Tapasco",
+    "rol": "Analista de Datos",
+    "linkedin": "https://www.linkedin.com/in/luis-tapasco/",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Quiero mejorar mi perfil profesional para encotrar mejores oportunidades laborales y aprender bastante al respecto de esta herramienta"
+  },
+  {
+    "github": "VivaGarp",
+    "nombre": "Eduardo D. La paz",
+    "rol": "Desarrollador Back-End",
+    "linkedin": "https://www.linkedin.com/in/dlapaz",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Aprender y Reforzar mis conocimientos, así como Conectar con personas del Rubro"
+  },
+  {
+    "github": "ypaolavar",
+    "nombre": "Paola Vargas",
+    "rol": "Analista DevOps",
+    "linkedin": "https://www.linkedin.com/in/pvargasrodriguez/",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Me gustaría fortalecer conocimientos en contenerización y servicios/recursos nativos de la nube, addemás de contribuir a la comunidad."
+  },
+  {
+    "github": "jujo23z",
+    "nombre": "Juan Jose Jaramillo",
+    "rol": "Ingeniero de Sistemas",
+    "linkedin": "https://www.linkedin.com/in/juan-jose-jaramillo-a8966123a/",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Quiero aprender todo lo posible de la comunidad y si es posible aportar."
+  },
+  {
+    "github": "Jera26",
+    "nombre": "Jeraldin Caliz",
+    "rol": "🎓 Estudiante Ingeniería de Software",
+    "linkedin": "https://www.linkedin.com/in/jeraldin-caliz/",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Quiero llevar la teoría a la práctica, aprender de los errores y construir una base sólida que me permita crecer en el mundo de Cloud Native, la nube y DevOps"
+  },
+  {
+    "github": "marnathali",
+    "nombre": "Nathali Anzola",
+    "rol": "Software Engineer",
+    "linkedin": "https://linkedin.com/in/maria-nathali-anzola",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Aprender a contenizar y desplegar mis aplicaciones con Docker y Kubernetes"
+  },
+  {
+    "github": "kevindazardev",
+    "nombre": "Kevin Daza",
+    "rol": "Software Developer",
+    "linkedin": "https://linkedin.com/in/kevindazar",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Incursionarme en el mundo DevOps y aprender construir, escalar y monitorear sistemas productivos complejos."
+  },
+  {
+    "github": "jcrvillamizar",
+    "nombre": "Juan Carlos Rodriguez Villamizar",
+    "rol": "Ingeniero de sistemas",
+    "linkedin": "https://www.linkedin.com/in/jcrvillamizar",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Mejora de mi perfil profesional y mis conocimientos en tecnologias Cloud"
+  },
+  {
+    "github": "aiops88",
+    "nombre": "Airy Nieves",
+    "rol": "👩‍💻 Ingeniera<br>Infraestructura",
+    "linkedin": "https://www.linkedin.com/in/airy-nc/",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Aprender de la comunidad de Cloud Native Medellín."
+  },
+  {
+    "github": "DavidUpegui",
+    "nombre": "David Upegui",
+    "rol": "Desarrollador Fullstack",
+    "linkedin": "https://linkedin.com/in/dupegui",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Nunca volver a decir \"En mi local sí funcionaba\""
+  },
+  {
+    "github": "devdavco",
+    "nombre": "David Corrales",
+    "rol": "Desarrollador Fullstack Java",
+    "linkedin": "https://www.linkedin.com/in/juandavidcorrales/",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "El conocimiento es la clave para mi avance tanto profesional como laboral."
+  },
+  {
+    "github": "mateoqc123",
+    "nombre": "Yeison Mateo Quintero Carmona",
+    "rol": "🗄️ DBA",
+    "linkedin": "https://www.linkedin.com/in/ymqc01",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Aprender Docker y Kubernetes y aportar a la comunidad Cloud Native."
+  },
+  {
+    "github": "parte193",
+    "nombre": "Johan Andrés López Zuluaga",
+    "rol": "Desarrollador Full-Stack",
+    "linkedin": "https://www.linkedin.com/in/johan-andres-lopez-zuluaga",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Entender de verdad cómo funcionan los contenedores y poder llevar mis propias apps de mi computador a producción sin miedo"
+  },
+  {
+    "github": "Hedache77",
+    "nombre": "Diego Moná",
+    "rol": "Fullstack Developer",
+    "linkedin": "https://www.linkedin.com/in/diego-mona/",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Aprender de la comunidad 💻 y fortalecer mis conocimientos acerca en Docker y Kubernetes"
+  },
+  {
+    "github": "jthan24",
+    "nombre": "Jhonnatan Gil",
+    "rol": "Developer",
+    "linkedin": "https://www.linkedin.com/in/JhonnyPong/",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Apoyar a la comunidad y poder compartir en lo posible parte de la experiencia! Gracias por este gran espacio"
+  },
+  {
+    "github": "karolrojas68",
+    "nombre": "Karol Rojas",
+    "rol": "Tripulante de la Comunidad",
+    "linkedin": "",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Aprender de la comunidad y fortalecer mis conocimientos en Kubernetes"
+  },
+  {
+    "github": "da237",
+    "nombre": "Daniel Esteban",
+    "rol": "Desarrollador Fullstack",
+    "linkedin": "https://linkedin.com/in/danielestebanosoriodavid/",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Fortalecer mis conocimientos y escalara laboralmenete aprovechando a maximo esta oportunidad"
+  },
+  {
+    "github": "Cuburi",
+    "nombre": "Yorman Agudelo",
+    "rol": "Fullstack Developer",
+    "linkedin": "https://www.linkedin.com/in/yorman-agudelo/",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Aprovechar al maximo esta oportunidad de aprender"
+  },
+  {
+    "github": "StivenMunera",
+    "nombre": "Stiven Munera",
+    "rol": "FullStack Developer Jr",
+    "linkedin": "https://www.linkedin.com/in/stiven-munera-quintero-80151721a/",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Aprender todo estos temas de performance y escalabilidad"
+  },
+  {
+    "github": "ggarzons",
+    "nombre": "Gonzalo Garzon",
+    "rol": "Cloud Architect",
+    "linkedin": "https://www.linkedin.com/in/giovanigonzalogarzonsegura-cloudarchitect",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Disfrutar y consolidar conocimientos, sobre todo practicar mucho"
+  },
+  {
+    "github": "Camilaux",
+    "nombre": "Maria Camila Zapata Arrubla",
+    "rol": "Data Scientist & AI Engineer",
+    "linkedin": "https://linkedin.com/in/maria-camila-zapata-arrubla-a594041b1/",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Quiero aprender Docker y Kubernetes porque mi objetivo es fortalecer mi perfil como AI Engineer y desarrollar soluciones de inteligencia artificial que no solo funcionen en entornos de experimentación, sino que también puedan desplegarse, escalarse y mantenerse en producción."
+  },
+  {
+    "github": "CristianCGonzalezO",
+    "nombre": "Cristian Gonzalez",
+    "rol": "Estudiante",
+    "linkedin": "https://linkedin.com/in/cristian-gonzalez-9b646a265/",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Aprender sobre kubernetes mediante los laboratorios y ejercios practicos"
+  },
+  {
+    "github": "santiagoalex",
+    "nombre": "Santiago Sanchez",
+    "rol": "Full Stack developer",
+    "linkedin": "https://linkedin.com/in/santiagoasz/",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Tengo el desaeo de aprender orquestaciones en ambientes más complejos que me permita avanzar en las propuestas de soluciones para flujos agenticos y Arquitecturas realistas con los mismos"
+  },
+  {
+    "github": "sanjavier88",
+    "nombre": "Jorge Alberto Monsalve Ruiz",
+    "rol": "Estudiante",
+    "linkedin": "",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "No tengo conocimiento de la nube, así que con el curso espero poder aprender a utilizarla."
+  },
+  {
+    "github": "maocorrea1015",
+    "nombre": "Hector Mauricio Forero Correa",
+    "rol": "software engineer",
+    "linkedin": "https://www.linkedin.com/in/mao-correa/",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Quiero aprender Docker y Kubernetes para fortalecer mi perfil profesional, mejorar mis oportunidades laborales y aspirar a mejores empleos en el sector tecnológico."
+  },
+  {
+    "github": "RAVILA28",
+    "nombre": "Fernando Avila",
+    "rol": "DevOps",
+    "linkedin": "https://www.linkedin.com/in/raymundo-avila-r-04775932",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Reforzar conocimiento y aportar a la comunidad."
+  },
+  {
+    "github": "wilfredogonzalez05",
+    "nombre": "Wilfredo Gonzalez",
+    "rol": "Integration Architect",
+    "linkedin": "https://www.linkedin.com/in/wilfredo-gonzalez-ortiz-5718a2161/",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Reforzar mis conocimientos sobre Kubernetes, aprender mucho para mejorar mis skills"
+  },
+  {
+    "github": "Danielgiraldo2010",
+    "nombre": "Daniel Giraldo",
+    "rol": "Ingeniero de Sistemas y Computación / Software Developer",
+    "linkedin": "",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Aprender Docker y Kubernetes para fortalecer mis conocimientos en despliegue de aplicaciones y tecnologías Cloud Native."
+  },
+  {
+    "github": "emmanuel-uribe",
+    "nombre": "Emmanuel Uribe",
+    "rol": "SRE / DevOps",
+    "linkedin": "https://linkedin.com/in/emmanuel-uribe-89890525a",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Reforzar conocimientos y sí es posible aportar"
+  },
+  {
+    "github": "manuonda",
+    "nombre": "David García",
+    "rol": "👨‍💻 Developer Junior",
+    "linkedin": "https://www.linkedin.com/in/david-garcia-51597469/",
+    "redes": [
+      "https://x.com/manuonda1"
+    ],
+    "rango": "⛵ Marinero",
+    "motivacion": "Aprender para la certificación KCNA de Kubernetes y colaborar con la comunidad.  🏔️☕"
+  },
+  {
+    "github": "Camilogigom",
+    "nombre": "Camilo Giraldo",
+    "rol": "Estudiante",
+    "linkedin": "https://www.linkedin.com/in/jcgiraldogo/",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "motivacion": "Aprender sobre Docker y Kubernete. Aprovechadno al maximo estos cursos"
+  }
+]

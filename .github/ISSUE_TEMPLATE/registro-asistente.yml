@@ -1,0 +1,71 @@
+name: "⛵ Registro en el Muro de Asistentes"
+description: "Regístrate en un clic en el Muro Oficial de la Tripulación de Cloud Native Medellín (sin código ni conflictos)"
+title: "⛵ Registro de Tripulante: [Escribe aquí tu Nombre]"
+labels: ["registro-asistente"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 🙌 ¡Bienvenido/a a bordo de **De Cero a Capitán en Kubernetes**! 🏔️☕
+        **¡Estás en el lugar correcto!** No necesitas tocar código para registrarte aquí. Solo sigue estos pasos:
+        1. **Title (Título arriba):** Puedes dejarlo como está o reemplazar `[Escribe aquí tu Nombre]` por tu nombre.
+        2. **Completa las casillas de abajo** (las que tienen `*` rojo son obligatorias).
+        3. **Baja hasta el final de la página** y haz clic en el botón verde **`Create`** (o **`Submit new issue`**).
+        
+        🤖 **¿Qué pasará después?** En unos 15 segundos, nuestro robot verificará tu usuario, pondrá tu foto de perfil oficial de GitHub y te agregará automáticamente a la tabla de **[`ASISTENTES.md`](https://github.com/edwinbermudez91/Fundamentos-Kubernetes/blob/main/ASISTENTES.md)** con tu rango de **⛵ Marinero**.
+
+  - type: input
+    id: nombre
+    attributes:
+      label: "1️⃣ 👤 Tu Nombre y Apellido"
+      description: "¿Cómo quieres aparecer en el Muro de la Tripulación?"
+      placeholder: "Ej: Ana María Gómez"
+    validations:
+      required: true
+
+  - type: input
+    id: github_user
+    attributes:
+      label: "2️⃣ 🐙 Tu Usuario de GitHub"
+      description: "Escribe tu nombre de usuario en GitHub (lo encuentras arriba a la derecha al hacer clic en tu foto de perfil). Con esto cargaremos tu avatar oficial y tu botón de GitHub."
+      placeholder: "Ej: anagomez-dev"
+    validations:
+      required: true
+
+  - type: input
+    id: rol
+    attributes:
+      label: "3️⃣ 💼 Tu Rol, Especialidad o Carrera"
+      description: "Tu cargo actual, área de interés o qué estás estudiando (si estás empezando desde cero, puedes poner Estudiante o Entusiasta Cloud)."
+      placeholder: "Ej: Estudiante de Ingeniería / Desarrollador Jr / Analista QA / DevOps"
+    validations:
+      required: true
+
+  - type: input
+    id: linkedin
+    attributes:
+      label: "4️⃣ 🌐 Enlace a tu perfil de LinkedIn (Opcional)"
+      description: "Ve a tu perfil de LinkedIn, copia la dirección de la barra del navegador y pégala aquí. Si no tienes o no deseas compartirlo, déjalo vacío."
+      placeholder: "https://www.linkedin.com/in/tu-usuario/"
+    validations:
+      required: false
+
+  - type: textarea
+    id: otras_redes
+    attributes:
+      label: "5️⃣ 🔗 Otras Redes Sociales o Portafolio (Opcional)"
+      description: "Si tienes X/Twitter, Instagram, YouTube, Medium, Dev.to, GitLab o tu página web personal, pega los enlaces aquí (uno por línea). Si no quieres agregar más redes, déjalo vacío."
+      placeholder: |
+        https://x.com/tu-usuario
+        https://tu-portafolio.dev
+    validations:
+      required: false
+
+  - type: textarea
+    id: motivacion
+    attributes:
+      label: "6️⃣ 🎯 ¿Qué te motivó a unirte o qué esperas aprender?"
+      description: "Cuéntanos en una frase qué te gustaría lograr en este curso."
+      placeholder: "Ej: Aprender a usar contenedores y Kubernetes desde cero y conocer personas de la comunidad."
+    validations:
+      required: true

@@ -8,7 +8,7 @@ Si es tu primera vez usando **Git** o haciendo un **Pull Request (PR)** en GitHu
 
 ## 🎯 3 Formas Fáciles de Empezar Hoy Mismo
 
-1. **Tu primer PR en 5 minutos ([`ASISTENTES.md`](./ASISTENTES.md)):** Abre el archivo `ASISTENTES.md` y agrega tu nombre al final de la tabla. ¡Con este solo paso zarpas en el workshop!
+1. **Regístrate en el Muro de Asistentes ([`ASISTENTES.md`](./ASISTENTES.md)):** Puedes hacerlo en 30 segundos usando nuestro **[⛵ Formulario Visual de Registro](https://github.com/edwinbermudez91/Fundamentos-Kubernetes/issues/new?template=registro-asistente.yml)** (¡el bot agregará tu foto y tus datos automáticamente sin errores!) o agregando tus datos en [`asistentes.json`](./asistentes.json) vía Pull Request. ¡Con este paso zarpas en el workshop!
 2. **Solucionar un "Reto Roto":** En cada semana encontrarás una carpeta `2.reto-roto/` con manifiestos YAML que fallan a propósito.
    * ⚠️ **Regla de oro:** ¡Nunca modifiques los archivos originales de `2.reto-roto/`!
    * Crea una carpeta personal: `aportes-comunidad/soluciones-retos/<tu-usuario-github>/semana-XX/` y pega allí tu YAML corregido con comentarios `#` explicando el error y la solución.
