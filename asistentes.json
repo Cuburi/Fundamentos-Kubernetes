@@ -385,5 +385,15 @@
     "rango": "⛵ Marinero",
     "puntos": 10,
     "motivacion": "Estoy en formación para ser un profesional integral y esto me ayuda demaciado."
+  },
+  {
+    "github": "juanjosegonzalezrosales",
+    "nombre": "Juan José González Rosales",
+    "rol": "Desarrollador Jr",
+    "linkedin": "https://www.linkedin.com/in/juan-josé-gonzález-rosales-40a4a8203?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "puntos": 10,
+    "motivacion": "Aprender sobre contenedores y kubernetes con el ánimo de crecer profesionalmente."
   }
 ]
