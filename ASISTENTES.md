@@ -84,7 +84,7 @@ Si prefieres hacerlo con comandos de `git`, edita tu bloque en [`asistentes.json
 
 ---
 
-## 👥 Tabla de Posiciones de la Tripulación (33 Tripulantes)
+## 👥 Tabla de Posiciones de la Tripulación (34 Tripulantes)
 
 <!-- INICIO_TABLA_ASISTENTES -->
 | # | 👤 Tripulante | 💼 Rol / Especialidad | 🌐 Redes Profesionales | 🎖️ Rango y Progreso (XP) | 🎯 ¿Qué te motivó a unirte? |
@@ -122,6 +122,7 @@ Si prefieres hacerlo con comandos de `git`, edita tu bloque en [`asistentes.json
 | #31 | <img src="https://github.com/emmanuel-uribe.png?size=50" width="32" height="32" style="border-radius: 50%; vertical-align: middle; margin-right: 8px;"> **Emmanuel Uribe** | SRE / DevOps | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/emmanuel-uribe)<br>[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/emmanuel-uribe-89890525a) | ⛵ Marinero<br><sub>**10 XP** (Registro inicial)</sub> | Reforzar conocimientos y sí es posible aportar |
 | #32 | <img src="https://github.com/manuonda.png?size=50" width="32" height="32" style="border-radius: 50%; vertical-align: middle; margin-right: 8px;"> **David García** | 👨‍💻 Developer Junior | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/manuonda)<br>[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/david-garcia-51597469/)<br>[![X](https://img.shields.io/badge/X-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/manuonda1) | ⛵ Marinero<br><sub>**10 XP** (Registro inicial)</sub> | Aprender para la certificación KCNA de Kubernetes y colaborar con la comunidad.  🏔️☕ |
 | #33 | <img src="https://github.com/Camilogigom.png?size=50" width="32" height="32" style="border-radius: 50%; vertical-align: middle; margin-right: 8px;"> **Camilo Giraldo** | Estudiante | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/Camilogigom)<br>[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jcgiraldogo/) | ⛵ Marinero<br><sub>**10 XP** (Registro inicial)</sub> | Aprender sobre Docker y Kubernete. Aprovechadno al maximo estos cursos |
+| #34 | <img src="https://github.com/MateoOrozcoCano.png?size=50" width="32" height="32" style="border-radius: 50%; vertical-align: middle; margin-right: 8px;"> **Mateo Orozco Cano** | Estudiante desarrollo de apps | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/MateoOrozcoCano)<br>[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mateo-orozco-cano-21bb90437/) | ⛵ Marinero<br><sub>**10 XP** (Registro inicial)</sub> | Estoy en formación para ser un profesional integral y esto me ayuda demaciado. |
 <!-- FIN_TABLA_ASISTENTES -->
 
 > [!TIP]

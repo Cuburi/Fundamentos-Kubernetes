@@ -375,5 +375,15 @@
     "rango": "⛵ Marinero",
     "puntos": 10,
     "motivacion": "Aprender sobre Docker y Kubernete. Aprovechadno al maximo estos cursos"
+  },
+  {
+    "github": "MateoOrozcoCano",
+    "nombre": "Mateo Orozco Cano",
+    "rol": "Estudiante desarrollo de apps",
+    "linkedin": "https://www.linkedin.com/in/mateo-orozco-cano-21bb90437/",
+    "redes": [],
+    "rango": "⛵ Marinero",
+    "puntos": 10,
+    "motivacion": "Estoy en formación para ser un profesional integral y esto me ayuda demaciado."
   }
 ]
